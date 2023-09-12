@@ -8,13 +8,10 @@ const HomeSection = () => {
         👋{"  "}Ashwin Parande
       </h2>
       <p className="px-2 text-lg opacity-90 mb-4 ">
-        <Balancer ratio={0.75}>
+        <Balancer>
           Hey, I&apos;m a computer science student from Indore,India with a
-          passion for building and creating stuff usefull to the masses. I have
-          a knack for all things creative from building and designing all the
-          way to solving real-life problems with code. In addition to
-          programming , I like playing football. Currently pursuing my
-          Bachelor&apos;s from Medicaps University
+          passion for building and creating stuff usefull to the
+          masses.Currently pursuing my Bachelor&apos;s from Medicaps University
         </Balancer>
       </p>
       <div className="w-full items-center justify-start  px-3 my-4 flex gap-x-2 text-lg opacity-100">

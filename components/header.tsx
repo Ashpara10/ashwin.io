@@ -2,7 +2,7 @@
 import Link from "next/link";
 import React, { Suspense, useEffect, useState } from "react";
 import { useTheme } from "next-themes";
-import { Sun, Moon } from "lucide-react";
+import { Sun, Moon, Menu } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
 const Header = () => {
@@ -27,19 +27,30 @@ const Header = () => {
 
   const { theme, setTheme } = useTheme();
   const [hasMounted, setHasMounted] = useState(false);
-
+  const [nav, setNav] = useState<boolean>(false);
   useEffect(() => {
     setHasMounted(true);
   }, []);
   return (
-    <header className=" main-header">
-      <nav className="rounded-3xl z-10 fixed top-4 px-4 py-2  bg-gray-100/40 dark:bg-dark/40 backdrop-blur-xl  max-w-2xl  flex items-center justify-between">
-        <ul className="flex gap-x-3 text-lg items-center justify-evenly">
+    <header className=" main-header ">
+      <nav className="md:rounded-full  z-10 fixed top-0 md:top-4 px-4 py-2.5  bg-gray-100/40 dark:bg-dark/40 backdrop-blur-xl  w-full md:max-w-2xl  flex items-center justify-between">
+        <ul className="w-full flex gap-x-3 text-lg items-center justify-between md:justify-evenly">
+          <li onClick={() => setNav(!nav)} className="flex md:hidden">
+            <Menu />
+          </li>
+          {nav && (
+            <div className="flex flex-col gap-2 absolute top-14 dark:bg-dark/50 bg-gray-100/60 backdrop-blur-xl items-center justify-center">
+              {/* <li>Home</li>
+              <li>About</li>
+              <li>Blog</li>
+              <li>Source</li> */}
+            </div>
+          )}
           {Object.entries(navItems).map(([path, { name }]) => {
             const isActive = path === pathname;
             return (
               <Link
-                className={`transition-all  hover:text-neutral-800 dark:hover:text-neutral-200 flex align-middle ${
+                className={`hidden md:flex transition-all  hover:text-neutral-800 dark:hover:text-neutral-200  align-middle ${
                   isActive ? "opacity-100" : "opacity-60"
                 }`}
                 href={path}

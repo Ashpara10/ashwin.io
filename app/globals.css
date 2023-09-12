@@ -7,10 +7,10 @@ body{
 
 }
 .main-header{
-  @apply w-full flex items-center justify-center px-4 py-2 mt-8 border-stone-300 dark:border-border
+  @apply w-full flex items-center justify-center px-4 py-2 mt-8 
 }
 pre {
-  @apply bg-transparent rounded-b-xl py-3 px-4  border border-gray-200 dark:border-border overflow-x-hidden max-w-2xl
+  @apply bg-transparent rounded-b-xl py-3 px-4  border border-gray-200 dark:border-border overflow-x-scroll max-w-2xl
 }
 .rehype-code-title{
   @apply dark:text-white translate-y-5 px-4 py-3 rounded-t-xl text-black bg-gray-200 dark:bg-border m-0 gap-0 

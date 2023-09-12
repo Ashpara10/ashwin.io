@@ -10,7 +10,7 @@ const BlogPage = ({ data }: { data: Blog }) => {
   const { title, image, readingTime, wordCount } = data;
   const Content = useMDXComponent(data?.body.code);
   return (
-    <article className="w-full px-4 max-w-2xl flex flex-col items-center justify-center">
+    <article className="w-full px-2 max-w-2xl flex flex-col items-center justify-center">
       <h1 className="text-3xl md:text-4xl font-bold w-full mb-2 ">
         <Balancer ratio={0.5}>{title}</Balancer>
       </h1>
