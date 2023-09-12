@@ -23,7 +23,7 @@ const ViewCounter = ({ slug }: { slug: string }) => {
       });
     };
     resgiterViewCount(slug, viewcount);
-  }, [slug]);
+  }, [slug, viewcount]);
   return <div>ViewCounter:{isLoading ? "loading..." : viewcount} </div>;
 };
 
