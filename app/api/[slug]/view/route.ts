@@ -2,7 +2,7 @@ import { NextApiRequest } from "next";
 import { NextRequest, NextResponse } from "next/server";
 import store from "@/lib/supabase";
 
-export async function GET  (req: NextApiRequest, { params }: { params: { slug: string } }) {
+export async function GET  (req: NextRequest, { params }: { params: { slug: string } }) {
   const { data:views, error } = await store
     .from("view")
     .select()
