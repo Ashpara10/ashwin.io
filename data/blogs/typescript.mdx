@@ -1,0 +1,74 @@
+---
+title: Understanding typescript fundamentals Interfaces and types
+image: /golang.webp
+createdAt: 2022-10-02
+---
+
+# Creating a PlanetScale Database
+
+- Prevent SQL injection
+- How to create a PScale Db
+- Quering from a table
+
+note[^1]
+
+[^1]: Big note.
+
+## Strikethrough
+
+~one~ or ~~two~~ tildes.
+
+```tsx:blog-card.tsx
+import { Blog } from "@/.contentlayer/generated";
+import Image from "next/image";
+import Link from "next/link";
+import React from "react";
+
+const BlogCard = ({ data }: { data: Blog }) => {
+  const { image, title, slug } = data;
+  return (
+    <article className="w-full  border border-gray-300 dark:border-border max-w-sm rounded-xl">
+      <div className="flex flex-col items-center justify-center px-4 py-6">
+        <Link href={`/blog/${slug}`}>
+          <h2 className="w-full text-2xl font-semibold ">{title}</h2>
+        </Link>
+      </div>
+    </article>
+  );
+};
+
+export default BlogCard;
+
+
+```
+
+# Awesome Typescript classes
+
+```tsx:Types.tsx
+enum Note {
+  Error,
+  Loading,
+  Success,
+}
+// types
+type Note{
+  title:string,
+  content:string,
+  published:boolean
+  createdAt:string,
+  updatedAt:string,
+  slug:string
+}
+const Demo=({note}:{note:Note})=>{
+  return <h1 className="text-2xl font-bold">{note.title}</h1>
+}
+```
+
+## Why i transitioned to Typescript and why you should too!
+
+- **Typescript** - provides its retrictions and helps to identify bugs during development of your app.
+- **Security** -Why you should use TypeScript over [JavaScript](http://vitejs.dev)?
+- Image result for why to use typescript
+  In contrast to JavaScript, TypeScript code is more reliable and easier to refactor. This enables developers to evade errors and do rewrites much easier.
+
+You can [view the entire source code here](https://github.com/leerob/youtube-to-mp3). Happy coding! 😄
