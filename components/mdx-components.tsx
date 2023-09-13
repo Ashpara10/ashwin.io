@@ -1,5 +1,5 @@
 import Image from "next/image";
-import React from "react";
+import React, { useState } from "react";
 
 const AnchorTag = (props: any) => {
   return (
@@ -62,16 +62,21 @@ const OrderedList = (props: any) => {
 };
 
 const RoundedImage = (props: any) => {
+  const [IsImageLoaded, setIsImageLoaded] = useState(true);
+
   return (
-    <Image
-      alt=""
-      src={props.src}
-      className="w-full rounded-md"
-      width={props.width}
-      height={props.height}
-      quality={100}
-      loading="lazy"
-    />
+    <div className=" w-full overflow-hidden rounded-xl bg-gray-200 ">
+      <Image
+        alt=""
+        className={`
+    duration-700 ease-in-out 
+    ${IsImageLoaded ? "blur-2xl " : " blur-0 "})`}
+        src={props.src}
+        width={800}
+        height={900}
+        onLoadingComplete={() => setIsImageLoaded(false)}
+      />
+    </div>
   );
 };
 

@@ -1,13 +1,28 @@
+"use client";
 import React from "react";
-
+import { motion } from "framer-motion";
+const variants = {
+  hidden: { opacity: 0, x: 0, y: 40 },
+  enter: { opacity: 1, x: 0, y: 0 },
+  exit: { opacity: 0, x: -0, y: 40 },
+};
 const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
-    <div
-      suppressHydrationWarning
-      className="px-4 w-full flex items-start justify-center min-h-screen my-16"
+    <motion.article
+      initial="hidden"
+      animate="enter"
+      exit="exit"
+      variants={variants}
+      transition={{ duration: 1.5, type: "easeInOut" }}
+      style={{ position: "relative" }}
     >
-      {children}
-    </div>
+      <div
+        suppressHydrationWarning
+        className="px-4 w-full flex items-start justify-center min-h-screen my-16"
+      >
+        {children}
+      </div>
+    </motion.article>
   );
 };
 

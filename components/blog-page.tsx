@@ -2,13 +2,14 @@
 import { Blog } from "@/.contentlayer/generated";
 import { useMDXComponent } from "next-contentlayer/hooks";
 import Image from "next/image";
-import React from "react";
+import React, { useState } from "react";
 import Balancer from "react-wrap-balancer";
 import { MdxComponent } from "./mdx-components";
 
 const BlogPage = ({ data }: { data: Blog }) => {
   const { title, image, readingTime, wordCount } = data;
   const Content = useMDXComponent(data?.body.code);
+  const [IsImageLoaded, setIsImageLoaded] = useState(true);
   return (
     <article className="w-full px-2 max-w-2xl flex flex-col items-center justify-center">
       <h1 className="text-3xl md:text-4xl font-bold w-full mb-2 ">
@@ -21,13 +22,18 @@ const BlogPage = ({ data }: { data: Blog }) => {
           <span className="text-lg ">{wordCount} words</span>
         </div>
       </div>
-      <Image
-        alt=""
-        className="rounded-2xl"
-        src={image}
-        width={800}
-        height={900}
-      />
+      <div className=" w-full overflow-hidden rounded-xl border-2 border-gray-200 dark:border-border">
+        <Image
+          alt=""
+          className={`
+        duration-700 ease-in-out group-hover:opacity-75
+        ${IsImageLoaded ? "blur-2xl " : " blur-0"})`}
+          src={image}
+          width={800}
+          height={900}
+          onLoadingComplete={() => setIsImageLoaded(false)}
+        />
+      </div>
       <div className="opacity-90 max-w-none w-full flex flex-col mt-6 gap-y-4 px-2 ">
         <Content components={MdxComponent} />
       </div>
