@@ -6,13 +6,13 @@ import { Provider } from "react-wrap-balancer";
 
 const Providers = ({ children }: { children: React.ReactNode }) => {
   return (
-    <SessionProvider>
-      <Provider>
-        <ThemeProvider attribute="class" defaultTheme="dark">
-          {children}
-        </ThemeProvider>
-      </Provider>
-    </SessionProvider>
+    // <SessionProvider>
+    <Provider>
+      <ThemeProvider attribute="class" defaultTheme="dark">
+        {children}
+      </ThemeProvider>
+    </Provider>
+    // </SessionProvider>
   );
 };
 

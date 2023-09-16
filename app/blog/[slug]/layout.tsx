@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 const variants = {
   hidden: { opacity: 0, x: 0, y: 40 },
   enter: { opacity: 1, x: 0, y: 0 },
-  exit: { opacity: 0, x: -0, y: 40 },
+  exit: { opacity: 0, x: -10, y: 40 },
 };
 const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
@@ -13,7 +13,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
       animate="enter"
       exit="exit"
       variants={variants}
-      transition={{ duration: 1.5, type: "easeInOut" }}
+      transition={{ duration: 0.8, type: "spring" }}
       style={{ position: "relative" }}
     >
       <div

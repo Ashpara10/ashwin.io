@@ -1,3 +1,4 @@
+"use client";
 import { allBlogs } from "@/.contentlayer/generated";
 import React from "react";
 import BlogCard from "../blog-card";
@@ -9,8 +10,8 @@ const BlogSection = () => {
         Popular Blogs
       </h2>
       <div className="w-full gap-3 grid grid-cols-1 sm:grid-cols-2 ">
-        {allBlogs.slice(0, 4).map((data) => {
-          return <BlogCard key={data?._id} data={data} />;
+        {allBlogs.slice(0, 4).map((data, index) => {
+          return <BlogCard key={data?._id} index={index} data={data} />;
         })}
       </div>
     </div>

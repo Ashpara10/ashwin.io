@@ -1,26 +1,28 @@
-import type { Config } from 'tailwindcss'
+import type { Config } from "tailwindcss";
 
 const config: Config = {
-  darkMode:"class",
+  darkMode: "class",
   content: [
-    './pages/**/*.{js,ts,jsx,tsx,mdx}',
-    './components/**/*.{js,ts,jsx,tsx,mdx}',
-    './app/**/*.{js,ts,jsx,tsx,mdx}',
+    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
+    "./components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
     extend: {
-      colors:{
-        dark:"#141414",
-        border:"#212121"
-      }
+      colors: {
+        dark: "#181818",
+        border: "#212121",
+        light: "#f4f4f4",
+        beige: "#fff9f0",
+      },
     },
   },
   corePlugins: {
     aspectRatio: false,
   },
   plugins: [
-    require('@tailwindcss/aspect-ratio'),
+    require("@tailwindcss/aspect-ratio"),
     // ...
   ],
-}
-export default config
+};
+export default config;

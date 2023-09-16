@@ -16,7 +16,7 @@ const AnchorTag = (props: any) => {
 const StyledHeading1 = (props: any) => {
   return (
     <>
-      <h1 className=" text-3xl font-gro font-bold py-1 dark:text-gray-50">
+      <h1 className=" text-2xl font-gro font-bold py-1 dark:text-gray-50">
         {props.children}
       </h1>
     </>

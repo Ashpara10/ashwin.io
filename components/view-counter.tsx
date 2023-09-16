@@ -1,4 +1,5 @@
 "use client";
+import { Eye, EyeIcon } from "lucide-react";
 import React, { useEffect } from "react";
 import useSWR from "swr";
 
@@ -12,19 +13,22 @@ const ViewCounter = ({ slug }: { slug: string }) => {
   const viewcount = views?.data?.count;
   useEffect(() => {
     const resgiterViewCount = async (slug: string, count: number) => {
-      fetch(`/api/${slug}/view`, {
+      await fetch(`/api/${slug}/view`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          views: viewcount,
         },
-        body: JSON.stringify({
-          count: count,
-        }),
       });
     };
     resgiterViewCount(slug, viewcount);
-  }, [slug, viewcount]);
-  return <div>ViewCounter:{isLoading ? "loading..." : viewcount} </div>;
+  }, [slug]);
+
+  return (
+    <div className="flex space-x-2 gap-x-2">
+      {isLoading ? "-----" : `${viewcount} views`}{" "}
+    </div>
+  );
 };
 
 export default ViewCounter;

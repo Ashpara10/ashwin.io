@@ -17,7 +17,7 @@ async function getBlogBySlug(slug: string) {
   const blog = allBlogs.find((blog) => {
     return blog.slug === slug;
   });
-  await delay(2000);
+  // await delay(2000);
 
   return { data: blog };
 }
