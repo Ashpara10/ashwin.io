@@ -39,7 +39,7 @@ const BlogPage = ({ data }: { data: Blog }) => {
           onLoadingComplete={() => setIsImageLoaded(false)}
         />
       </div>
-      <div className="opacity-90 max-w-none w-full flex flex-col mt-6 gap-y-4 px-2 ">
+      <div className=" max-w-none w-full flex flex-col mt-6 gap-y-4 px-2 ">
         <Content components={MdxComponent} />
       </div>
     </article>

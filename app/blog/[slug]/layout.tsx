@@ -18,7 +18,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
     >
       <div
         suppressHydrationWarning
-        className="px-4 w-full flex items-start justify-center min-h-screen my-16"
+        className="px-4 w-full flex items-start justify-center min-h-screen my-24"
       >
         {children}
       </div>

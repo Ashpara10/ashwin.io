@@ -20,7 +20,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${gro.className}  text-black bg-light dark:text-beige dark:bg-dark`}
+        className={`${gro.className}  text-black/90 bg-light dark:text-beige dark:bg-dark`}
       >
         <Providers>
           <Header />

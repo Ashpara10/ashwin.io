@@ -25,7 +25,7 @@ const StyledHeading1 = (props: any) => {
 
 const BlockQuote = (props: any) => {
   return (
-    <blockquote className="w-full border-l-2 flex flex-col items-center justify-center border-violet-500  dark:border-violet-900 dark:text-black py-3 px-4 font-base italic   ">
+    <blockquote className="w-full border-l-4 flex flex-col items-center justify-center border-violet-500  dark:border-violet-900 dark:text-black py-3 px-4 font-base italic   ">
       {props.children}
     </blockquote>
   );
@@ -33,29 +33,25 @@ const BlockQuote = (props: any) => {
 
 const StyledHeading2 = (props: any) => {
   return (
-    <h2 className=" text-2xl font-gro font-bold py-1 dark:text-gray-50">
-      {props.children}
-    </h2>
+    <h2 className=" text-2xl font-gro font-bold py-1 ">{props.children}</h2>
   );
 };
 const StyledHeading3 = (props: any) => {
   return (
-    <h3 className=" text-xl font-gro font-bold py-1 dark:text-gray-50">
-      {props.children}
-    </h3>
+    <h3 className=" text-xl font-gro font-bold py-1 ">{props.children}</h3>
   );
 };
 
 const UnorderedList = (props: any) => {
   return (
-    <ul className="w-full list-outside list-disc flex gap-y-3.5 my-2 dark:text-white flex-col   ">
+    <ul className="w-full list-outside list-disc flex gap-y-3.5 my-2  flex-col   ">
       {props.children}
     </ul>
   );
 };
 const OrderedList = (props: any) => {
   return (
-    <ol className="w-full list-decimal list-outside flex gap-y-3.5 my-2 dark:text-white flex-col ">
+    <ol className="w-full list-decimal list-outside flex gap-y-3.5 my-2 flex-col ">
       {props.children}
     </ol>
   );
@@ -86,7 +82,7 @@ const StrongTag = (props: any) => {
 
 const Para = (props: any) => {
   return (
-    <p className="w-full font-gro text-medium dark:text-white  ">
+    <p className="w-full font-gro text-base dark:text-white  ">
       {props.children}
     </p>
   );
