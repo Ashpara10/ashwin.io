@@ -35,10 +35,15 @@ var contentlayer_config_default = makeSource({
   documentTypes: [Blog],
   mdx: {
     remarkPlugins: [remarkGfm],
-    rehypePlugins: [rehypeSlug, rehypeCodeTitles, rehypePrism]
+    rehypePlugins: [
+      rehypeSlug,
+      rehypeCodeTitles,
+      rehypePrism
+      // rehypePrettyCode,
+    ]
   }
 });
 export {
   contentlayer_config_default as default
 };
-//# sourceMappingURL=compiled-contentlayer-config-ML6KAX5F.mjs.map
+//# sourceMappingURL=compiled-contentlayer-config-MAAKXKZT.mjs.map

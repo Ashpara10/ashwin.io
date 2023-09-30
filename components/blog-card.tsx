@@ -38,21 +38,20 @@ const BlogCard = ({ data, index }: { data: Blog; index: number }) => {
         once: true,
       }}
       initial="initial"
-      className="w-full flex flex-col px-4 py-3 gap-3 rounded-xl border border-gray-300 dark:border-border max-w-md "
+      className="w-full flex flex-col px-4 py-3 gap-3 rounded-md border border-gray-300 dark:border-border max-w-md "
     >
       <div className="flex flex-col items-center gap-3 justify-center  gap-y-2 ">
+        <h2 className="w-full text-left  font-semibold text-xl  ">
+          <Link href={`/blog/${slug}`}>{title}</Link>
+        </h2>
         <span className="flex w-full opacity-80 text-left gap-x-3">
           {new Date(createdAt).toDateString()}
         </span>
 
-        <h2 className="w-full text-left  font-semibold text-xl  ">
-          <Link href={`/blog/${slug}`}>{title}</Link>
-        </h2>
-
-        <span className="flex w-full text-left gap-x-3">
+        {/* <span className="flex w-full text-left gap-x-3">
           <EyeIcon />
           {views}
-        </span>
+        </span> */}
       </div>
     </motion.article>
   );

@@ -20,7 +20,7 @@ const Header = () => {
     "/blog": {
       name: "Blog",
     },
-    "/github.com/Ashpara10/ashwin.io": {
+    "https://github.com/Ashpara10/ashwin.io": {
       name: "Source",
     },
   };
@@ -32,15 +32,20 @@ const Header = () => {
   }, []);
   return (
     <header className=" main-header  ">
-      <nav className="rounded-3xl mx-2 shadow-md shadow-black/30  dark:shadow-black/70 z-10 fixed top-4 px-4 py-2.5  bg-gray-100/40 dark:bg-dark/40 backdrop-blur-lg  max-w-2xl  flex items-center justify-between">
+      <nav className="rounded-3xl mx-2  z-10 fixed top-4 px-4 py-2.5  bg-gray-100/40 dark:bg-dark/40 backdrop-blur-lg  max-w-2xl  flex items-center justify-between">
         <ul className="w-full flex gap-x-3 text-lg items-center justify-between md:justify-evenly">
           {Object.entries(navItems).map(([path, { name }]) => {
             const isActive = path === pathname;
+            if (name === "Source") {
+              return (
+                <a key={name} href={path} target="_blank">
+                  {name}
+                </a>
+              );
+            }
             return (
               <Link
-                className={` transition-all  ${
-                  isActive ? "opacity-100" : "opacity-70"
-                }`}
+                className={` transition-all  ${isActive && "underline"}`}
                 href={path}
                 key={path}
               >
