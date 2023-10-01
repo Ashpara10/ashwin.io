@@ -47,11 +47,6 @@ const BlogCard = ({ data, index }: { data: Blog; index: number }) => {
         <span className="flex w-full opacity-80 text-left gap-x-3">
           {new Date(createdAt).toDateString()}
         </span>
-
-        {/* <span className="flex w-full text-left gap-x-3">
-          <EyeIcon />
-          {views}
-        </span> */}
       </div>
     </motion.article>
   );
