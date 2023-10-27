@@ -23,8 +23,8 @@ export default function RootLayout({
         className={`${gro.className}  text-black/90 bg-light dark:text-beige dark:bg-dark`}
       >
         <Providers>
-          <Header />
           <MobileHeader />
+          <Header />
           <main className="mt-16">{children}</main>
         </Providers>
       </body>

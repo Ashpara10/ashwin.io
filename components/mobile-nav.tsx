@@ -65,7 +65,7 @@ const MobileHeader = () => {
           },
         }}
         exit={{ scale: 0.1, opacity: 0 }}
-        className="absolute  border-b border-gray-300 dark:border-border  w-52  px-4 py-8 rounded-xl bg-gray-100 shadow-md dark:shadow-black/60 dark:bg-dark overflow-hidden top-20 right-4 z-10"
+        className="absolute    w-52  px-4 py-8 rounded-xl bg-gray-100 shadow-md dark:shadow-black/60 dark:bg-dark overflow-hidden top-20 right-4 z-10"
       >
         <motion.ul className="w-full flex flex-col items-center justify-start">
           {Object.entries(navItems).map(([path, { name, icon }]) => {
@@ -100,9 +100,8 @@ const MobileHeader = () => {
       animate="enter"
       transition={{ duration: 0.8, type: "easeInOut" }}
       variants={variants}
-      className="flex md:hidden bg-light dark:bg-dark border border-gray-300 dark:border-border px-4 py-2.5 items-center justify-end z-10 fixed top-0 right-0 left-0 "
+      className="flex md:hidden backdrop-blur-lg  px-4 py-2.5 items-center justify-end z-10 fixed top-0 right-0 left-0 "
     >
-      {/* <span className="">Logo</span> */}
       {show && <DropDownMenu />}
 
       <div className="flex space-x-3">
@@ -125,7 +124,7 @@ const MobileHeader = () => {
 
         <button
           onClick={() => setShow(!show)}
-          className="border flex items-center justify-center bg-gray-300/70 dark:bg-border rounded-lg  border-gray-200 dark:border-border"
+          className="border flex items-center justify-center rounded-lg  border-gray-200 dark:border-border"
         >
           {show ? (
             <XIcon className="opacity-90 m-1.5" />
