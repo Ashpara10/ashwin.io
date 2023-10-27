@@ -31,9 +31,9 @@ const Header = () => {
     setHasMounted(true);
   }, []);
   return (
-    <header className=" main-header  ">
-      <nav className="rounded-3xl mx-2 shadow-md shadow-black/30  z-10 fixed bottom-4 px-4 py-2.5  bg-gray-100/40 dark:bg-dark/40 backdrop-blur-lg  max-w-2xl  flex items-center justify-between">
-        <ul className="w-full flex gap-x-3 text-lg items-center justify-between md:justify-evenly">
+    <header className=" main-header ">
+      <nav className="rounded-3xl mx-2    px-4 py-2.5  max-w-2xl  flex items-center justify-between">
+        <ul className="w-full flex gap-x-4 text-lg items-center justify-between md:justify-evenly">
           {Object.entries(navItems).map(([path, { name }]) => {
             const isActive = path === pathname;
             if (name === "Source") {
@@ -45,7 +45,9 @@ const Header = () => {
             }
             return (
               <Link
-                className={` transition-all  ${isActive && ""}`}
+                className={` transition-all  ${
+                  isActive && "dark:bg-border/50 rounded-lg bg-gray-200"
+                }`}
                 href={path}
                 key={path}
               >

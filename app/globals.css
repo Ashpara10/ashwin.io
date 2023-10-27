@@ -7,7 +7,7 @@ body{
 
 } 
 .main-header{
-  @apply w-full hidden md:flex  items-center justify-center px-4 py-2 mt-8 
+  @apply w-full hidden md:flex  items-center justify-center px-4   z-10 fixed top-0 backdrop-blur-lg
 }
 pre {
   @apply bg-transparent rounded-b-xl py-3 px-4  border border-gray-200 dark:border-border overflow-x-scroll max-w-2xl

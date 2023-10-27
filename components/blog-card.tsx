@@ -3,7 +3,6 @@ import { Blog } from "@/.contentlayer/generated";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { Variants, motion } from "framer-motion";
-import { EyeIcon } from "lucide-react";
 import Image from "next/image";
 
 const BlogCard = ({ data, index }: { data: Blog; index: number }) => {
@@ -38,7 +37,7 @@ const BlogCard = ({ data, index }: { data: Blog; index: number }) => {
         once: true,
       }}
       initial="initial"
-      className="w-full flex flex-col px-4 py-3 gap-3 rounded-md border border-gray-300 dark:border-border max-w-md "
+      className="w-full flex flex-col px-4 py-3 gap-3 rounded-xl border border-gray-300 bg-gray-100 dark:bg-dark dark:border-border max-w-md "
     >
       <div className="flex flex-col items-center gap-3 justify-center  gap-y-2 ">
         <h2 className="w-full text-left  font-semibold text-xl  ">

@@ -5,7 +5,7 @@ import { Inter, Space_Grotesk } from "next/font/google";
 import Providers from "@/lib/providers";
 import MobileHeader from "@/components/mobile-nav";
 
-const gro = Space_Grotesk({ subsets: ["latin"] });
+const gro = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Ashwin",
