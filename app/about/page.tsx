@@ -2,7 +2,6 @@
 import Image from "next/image";
 import React, { useState } from "react";
 import { Variants, motion } from "framer-motion";
-import { Instagram, Twitter } from "lucide-react";
 
 const Page = () => {
   const socials = [
@@ -88,6 +87,7 @@ const Page = () => {
                 variants={socialCardVariants}
                 whileInView={"enter"}
                 initial="initial"
+                key={i}
                 className={`rounded-2xl w-full p-3 border dark:border-border border-gray-300`}
               >
                 <Image

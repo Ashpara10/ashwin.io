@@ -3,7 +3,6 @@ import { Blog } from "@/.contentlayer/generated";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { Variants, motion } from "framer-motion";
-import Image from "next/image";
 
 const BlogCard = ({ data, index }: { data: Blog; index: number }) => {
   const variants: Variants = {
@@ -18,16 +17,7 @@ const BlogCard = ({ data, index }: { data: Blog; index: number }) => {
     }),
   };
   const { title, image, slug, createdAt } = data;
-  const [views, setViews] = useState<number>();
-  useEffect(() => {
-    const getViewBySlug = async () => {
-      const res = await fetch(`/api/${slug}/view`);
-      const data = await res.json();
-      const viewcount = data?.data?.count;
-      setViews(viewcount);
-    };
-    getViewBySlug();
-  }, []);
+
   return (
     <motion.article
       custom={index}
