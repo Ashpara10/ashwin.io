@@ -5,11 +5,9 @@ import HomeSection from "@/components/home/home-section";
 
 export default function Home() {
   return (
-    <main className="w-full px-6 flex min-h-screen flex-col items-center justify-center my-10">
-      <AnimateWrapper>
-        <HomeSection />
-        <BlogSection />
-      </AnimateWrapper>
+    <main className="max-w-2xl w-full flex flex-col items-center justify-center">
+      <HomeSection />
+      <BlogSection />
     </main>
   );
 }

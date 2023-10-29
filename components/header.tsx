@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import { useTheme } from "next-themes";
 import { Sun, Moon } from "lucide-react";
 import { usePathname } from "next/navigation";
+import { motion } from "framer-motion";
 
 const Header = () => {
   let pathname = usePathname() || "/";
@@ -30,6 +31,7 @@ const Header = () => {
   useEffect(() => {
     setHasMounted(true);
   }, []);
+  const [hoveredPath, setHoveredPath] = useState(pathname);
   return (
     <header className=" main-header ">
       <nav className="rounded-3xl mx-2    px-4 py-2.5  max-w-2xl  flex items-center justify-between">
@@ -45,13 +47,30 @@ const Header = () => {
             }
             return (
               <Link
-                className={` transition-all  ${
-                  isActive && "dark:bg-border/50 rounded-lg bg-gray-200"
+                className={`relative duration-300 ease-in transition-all px-4 py-1 ${
+                  isActive
+                    ? " dark:text-black  text-white "
+                    : "dark:text-white text-black"
                 }`}
                 href={path}
                 key={path}
+                onClick={() => setHoveredPath(path)}
               >
-                <li className="relative py-1 px-2.5">{name} </li>
+                <li className="">{name} </li>
+                {path === hoveredPath && (
+                  <motion.div
+                    className="absolute bottom-0 left-0 h-full dark:bg-white  rounded-full bg-black  -z-10"
+                    layoutId="navbar"
+                    aria-hidden="true"
+                    style={{
+                      width: "100%",
+                    }}
+                    transition={{
+                      type: "spring",
+                      bounce: 0.002,
+                    }}
+                  />
+                )}
               </Link>
             );
           })}

@@ -13,7 +13,7 @@ const BlogCard = ({ data, index }: { data: Blog; index: number }) => {
       opacity: 1,
       transition: {
         delay: 0.2 * i,
-        type: "easeInOut",
+        type: "spring",
       },
     }),
   };
@@ -37,10 +37,10 @@ const BlogCard = ({ data, index }: { data: Blog; index: number }) => {
         once: true,
       }}
       initial="initial"
-      className="w-full flex flex-col px-4 py-3 gap-3 rounded-xl border border-gray-300 bg-gray-100 dark:bg-dark dark:border-border max-w-md "
+      className="w-full md:min-h-[200px] flex flex-col  gap-3 rounded-3xl border border-gray-300 bg-gray-100 dark:bg-dark dark:border-border "
     >
-      <div className="flex flex-col items-center gap-3 justify-center  gap-y-2 ">
-        <h2 className="w-full text-left  font-semibold text-xl  ">
+      <div className="flex flex-col items-center gap-3 justify-center  gap-y-2 px-4 py-5">
+        <h2 className="w-full text-left  font-semibold tracking-tight text-2xl  ">
           <Link href={`/blog/${slug}`}>{title}</Link>
         </h2>
         <span className="flex w-full opacity-80 text-left gap-x-3">

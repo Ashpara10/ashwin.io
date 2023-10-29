@@ -1,16 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { Variants, motion } from "framer-motion";
-import {
-  GithubIcon,
-  HomeIcon,
-  Menu,
-  Moon,
-  Pencil,
-  Sun,
-  User2,
-  XIcon,
-} from "lucide-react";
+import { Menu, Moon, Sun, XIcon } from "lucide-react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { useTheme } from "next-themes";
@@ -40,15 +31,12 @@ const MobileHeader = () => {
     const navItems = {
       "/": {
         name: "Home",
-        icon: <HomeIcon className="opacity-90 text-sm" />,
       },
       "/about": {
         name: "About",
-        icon: <User2 className="opacity-90 text-sm" />,
       },
       "/blog": {
         name: "Blog",
-        icon: <Pencil className="opacity-90 text-sm" />,
       },
     };
 
@@ -68,7 +56,7 @@ const MobileHeader = () => {
         className="absolute    w-52  px-4 py-8 rounded-xl bg-gray-100 shadow-md dark:shadow-black/60 dark:bg-dark overflow-hidden top-20 right-4 z-10"
       >
         <motion.ul className="w-full flex flex-col items-center justify-start">
-          {Object.entries(navItems).map(([path, { name, icon }]) => {
+          {Object.entries(navItems).map(([path, { name }]) => {
             const isActive = path === pathname;
             return (
               <Link

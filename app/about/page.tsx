@@ -2,8 +2,38 @@
 import Image from "next/image";
 import React, { useState } from "react";
 import { Variants, motion } from "framer-motion";
+import { Instagram, Twitter } from "lucide-react";
 
 const Page = () => {
+  const socials = [
+    {
+      name: "Instagram",
+      icon: "/icons/insta.svg",
+    },
+    {
+      name: "Twitter",
+      icon: "/icons/twitter.svg",
+    },
+    {
+      name: "Pinterest",
+      icon: "/icons/pinterest.svg",
+    },
+    {
+      name: "LinkedIn",
+      icon: "/icons/linkedIn.svg",
+    },
+  ];
+  const socialCardVariants: Variants = {
+    initial: { y: 20, opacity: 0 },
+    enter: (i) => ({
+      y: 0,
+      opacity: 1,
+      transition: {
+        delay: 0.2 * i,
+        type: "spring",
+      },
+    }),
+  };
   const variants: Variants = {
     hidden: { opacity: 0, x: 0, y: 50 },
     enter: {
@@ -47,9 +77,30 @@ const Page = () => {
           programming and football .Currently pursuing my Bachelor&apos;s from
           Medicaps University
         </p>
-        <h2 className="w-full text-left px-1.5 mt-1.5 text-4xl font-bold underline-offset-2 underline">
-          Socials
+        <h2 className="w-full text-left px-1.5 mt-4 tracking-tighter text-4xl font-bold ">
+          Socials & Contacts
         </h2>
+        <div className="w-full mt-3 grid grid-cols-2 gap-2 items-center justify-center">
+          {socials.map((e, i) => {
+            return (
+              <motion.div
+                custom={i}
+                variants={socialCardVariants}
+                whileInView={"enter"}
+                initial="initial"
+                className={`rounded-2xl w-full p-3 border dark:border-border border-gray-300`}
+              >
+                <Image
+                  alt={e.name}
+                  width={40}
+                  height={40}
+                  className=""
+                  src={e.icon}
+                />
+              </motion.div>
+            );
+          })}
+        </div>
       </motion.div>
     </div>
   );

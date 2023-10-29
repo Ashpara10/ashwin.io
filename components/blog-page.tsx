@@ -15,7 +15,7 @@ const BlogPage = ({ data }: { data: Blog }) => {
     <article className="w-full px-2 max-w-2xl flex flex-col items-center justify-center">
       <span className="w-full gap-x-3 mb-3 flex items-center justify-start opacity-90 text-left">
         {new Date(createdAt).toDateString()}
-        <ViewCounter slug={slug} />
+        {/* <ViewCounter slug={slug} /> */}
       </span>
       <h1 className="text-3xl md:text-4xl font-bold w-full mb-2 ">
         <Balancer ratio={0.5}>{title}</Balancer>

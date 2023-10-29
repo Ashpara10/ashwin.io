@@ -4,8 +4,9 @@ import type { Metadata } from "next";
 import { Inter, Space_Grotesk } from "next/font/google";
 import Providers from "@/lib/providers";
 import MobileHeader from "@/components/mobile-nav";
+import HomeSection from "@/components/home/home-section";
 
-const gro = Inter({ subsets: ["latin"] });
+const gro = Inter({ subsets: ["cyrillic-ext"] });
 
 export const metadata: Metadata = {
   title: "Ashwin",
@@ -20,12 +21,15 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${gro.className}  text-black/90 bg-light dark:text-beige dark:bg-dark`}
+        className={`${gro.className} flex  w-full text-black/90 bg-light dark:text-beige dark:bg-dark`}
       >
         <Providers>
-          <MobileHeader />
           <Header />
-          <main className="mt-16">{children}</main>
+          <MobileHeader />
+
+          <main className="w-full flex flex-col items-center justify-center  px-4 min-h-screen  ">
+            {children}
+          </main>
         </Providers>
       </body>
     </html>
