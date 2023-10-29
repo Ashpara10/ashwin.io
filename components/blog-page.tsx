@@ -5,7 +5,6 @@ import Image from "next/image";
 import React, { useState } from "react";
 import Balancer from "react-wrap-balancer";
 import { MdxComponent } from "./mdx-components";
-import ViewCounter from "./view-counter";
 
 const BlogPage = ({ data }: { data: Blog }) => {
   const { title, image, readingTime, createdAt, wordCount, slug } = data;
