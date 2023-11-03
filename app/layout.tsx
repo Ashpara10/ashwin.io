@@ -27,9 +27,7 @@ export default function RootLayout({
           <Header />
           <MobileHeader />
 
-          <main className="w-full flex flex-col items-center justify-center  px-4 min-h-screen  ">
-            {children}
-          </main>
+          <main className="w-full  px-4 min-h-screen  ">{children}</main>
         </Providers>
       </body>
     </html>

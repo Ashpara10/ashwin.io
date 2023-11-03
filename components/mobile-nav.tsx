@@ -53,9 +53,9 @@ const MobileHeader = () => {
           },
         }}
         exit={{ scale: 0.1, opacity: 0 }}
-        className="absolute    w-52  px-4 py-8 rounded-xl bg-gray-100 shadow-md dark:shadow-black/60 dark:bg-dark overflow-hidden top-20 right-4 z-10"
+        className="absolute    w-52    rounded-xl bg-gray-100 shadow-md dark:shadow-black/60 dark:bg-dark overflow-hidden top-20 right-4 z-10"
       >
-        <motion.ul className="w-full flex flex-col items-center justify-start">
+        <motion.ul className="w-full p-4  flex flex-col items-center justify-start">
           {Object.entries(navItems).map(([path, { name }]) => {
             const isActive = path === pathname;
             return (
@@ -103,7 +103,7 @@ const MobileHeader = () => {
         ) : (
           <button
             onClick={() => setTheme("dark")}
-            className="p-2 rounded-2xl text-sm bg-purple-700 text-white"
+            className={`p-2  rounded-2xl text-sm bg-purple-700 text-white`}
           >
             {" "}
             <Moon className="text-sm" />
@@ -112,7 +112,7 @@ const MobileHeader = () => {
 
         <button
           onClick={() => setShow(!show)}
-          className="border flex items-center justify-center rounded-lg  border-gray-200 dark:border-border"
+          className={`border flex items-center justify-center rounded-lg  border-gray-200 dark:border-border`}
         >
           {show ? (
             <XIcon className="opacity-90 m-1.5" />

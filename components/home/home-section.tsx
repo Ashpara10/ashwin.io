@@ -12,7 +12,7 @@ const HomeSection = () => {
           height={200}
           alt=""
           quality={100}
-          src={"/me/me2.jpg"}
+          src={"/me/me5.jpg"}
         />
       </div>
       <h2 className="w-full tracking-tighter leading-[120%] text-left text-4xl font-extrabold">
