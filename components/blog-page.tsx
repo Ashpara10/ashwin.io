@@ -11,7 +11,7 @@ const BlogPage = ({ data }: { data: Blog }) => {
   const Content = useMDXComponent(data?.body.code);
   const [IsImageLoaded, setIsImageLoaded] = useState(true);
   return (
-    <article className="w-full px-2 max-w-2xl flex flex-col items-center justify-center">
+    <article className="w-full  max-w-2xl flex flex-col items-center justify-center">
       <span className="w-full gap-x-3 mb-3 flex items-center justify-start opacity-90 text-left">
         {new Date(createdAt).toDateString()}
         {/* <ViewCounter slug={slug} /> */}
