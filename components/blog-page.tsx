@@ -2,19 +2,32 @@
 import { Blog } from "@/.contentlayer/generated";
 import { useMDXComponent } from "next-contentlayer/hooks";
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Balancer from "react-wrap-balancer";
 import { MdxComponent } from "./mdx-components";
+import { doc, increment, setDoc, updateDoc } from "firebase/firestore";
+import { db } from "@/lib/firebase";
+import Views from "./views";
+import { Heart } from "lucide-react";
 
 const BlogPage = ({ data }: { data: Blog }) => {
   const { title, image, readingTime, createdAt, wordCount, slug } = data;
   const Content = useMDXComponent(data?.body.code);
   const [IsImageLoaded, setIsImageLoaded] = useState(true);
+
+  useEffect(() => {
+    const incrementViews = async () => {
+      await updateDoc(doc(db, "posts", data.slug), {
+        views: increment(1),
+      });
+    };
+    incrementViews();
+  }, []);
+
   return (
     <article className="w-full  max-w-2xl flex flex-col items-center justify-center">
       <span className="w-full gap-x-3 mb-3 flex items-center justify-start opacity-90 text-left">
         {new Date(createdAt).toDateString()}
-        {/* <ViewCounter slug={slug} /> */}
       </span>
       <h1 className="text-3xl md:text-4xl font-bold w-full mb-2 ">
         <Balancer ratio={0.5}>{title}</Balancer>
@@ -24,6 +37,10 @@ const BlogPage = ({ data }: { data: Blog }) => {
           <span className="text-lg ">{readingTime.text}</span>
           {"  |  "}
           <span className="text-lg ">{wordCount} words</span>
+        </div>
+        <div className="flex items-center justify-center gap-x-2">
+          {/* <Heart /> */}
+          <Views slug={slug} />
         </div>
       </div>
       <div className=" w-full overflow-hidden rounded-xl border-2 border-gray-200 dark:border-border">

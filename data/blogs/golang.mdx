@@ -6,64 +6,34 @@ createdAt: 2022-10-02
 
 > Next.js has two forms of pre-rendering: [**Static Generation**](http://next.org) and **Server-side Rendering**. The difference is in **when** it generates the HTML for a page.
 
-# Creating a PlanetScale Database
+## Understanding channels in golang
 
-- Prevent SQL injection
-- How to create a PScale Db
-- Quering from a table
+- consider a channel to be a tunnel which helps in passing data between processes
+- Channels enables us to communicate between goroutnies
 
-note[^1]
+## Buffered vs Unbuffered channels
 
-[^1]: Big note.
+```go:main.go showLineNumbers
+package main
 
-## Strikethrough
+import (
+  "fmt"
+  "time"
+)
 
-~one~ or ~~two~~ tildes.
+func main () {
+    start:= time.Now()
+    resp:= make(chan any,2)
 
-```tsx:blog-card.tsx
-import { Blog } from "@/.contentlayer/generated";
-import Image from "next/image";
-import Link from "next/link";
-import React from "react";
+    go fetchPosts(resp chan any)
+    go fetchUserLikes(resp chan any)
 
-const BlogCard = ({ data }: { data: Blog }) => {
-  const { image, title, slug } = data;
-  return (
-    <article className="w-full  border border-gray-300 dark:border-border max-w-sm rounded-xl">
-      <div className="flex flex-col items-center justify-center px-4 py-6">
-        <Link href={`/blog/${slug}`}>
-          <h2 className="w-full text-2xl font-semibold ">{title}</h2>
-        </Link>
-      </div>
-    </article>
-  );
-};
-
-export default BlogCard;
-
-
-```
-
-# Awesome Typescript classes
-
-```tsx:Types.tsx
-enum Note {
-  Error,
-  Loading,
-  Success,
+    for data:=range resp {
+       fmt.Println("response:  ",data)
+    }
+    fmt.Println("took: ",time.Since(start))
 }
-// types
-type Note{
-  title:string,
-  content:string,
-  published:boolean
-  createdAt:string,
-  updatedAt:string,
-  slug:string
-}
-const Demo=({note}:{note:Note})=>{
-  return <h1 className="text-2xl font-bold">{note.title}</h1>
-}
+
 ```
 
 ## Why i transitioned to Typescript and why you should too!

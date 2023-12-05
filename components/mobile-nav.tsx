@@ -39,7 +39,7 @@ const MobileHeader = () => {
         name: "Blog",
       },
     };
-
+    const [hoveredPath, setHoveredPath] = useState(pathname);
     return (
       <motion.div
         ref={ref as any}
@@ -53,20 +53,21 @@ const MobileHeader = () => {
           },
         }}
         exit={{ scale: 0.1, opacity: 0 }}
-        className="absolute    w-52    rounded-xl bg-gray-100 shadow-md dark:shadow-black/60 dark:bg-dark overflow-hidden top-20 right-4 z-10"
+        className="absolute    w-52    rounded-3xl bg-gray-100 border border-gray-200 dark:border-border dark:bg-dark overflow-hidden top-20 right-4 z-10"
       >
         <motion.ul className="w-full p-4  flex flex-col items-center justify-start">
           {Object.entries(navItems).map(([path, { name }]) => {
             const isActive = path === pathname;
             return (
               <Link
-                className={`w-full flex items-center justify-between text-lg transition-all  hover:text-neutral-800 rounded-lg dark:hover:text-neutral-200 ${
-                  isActive && "bg-gray-200 dark:bg-border"
-                }`}
+                className={`w-full relative rounded-lg flex items-center justify-between text-lg transition-all   
+                ${isActive && "dark:bg-border bg-gray-200 "}
+                `}
                 href={path}
                 key={path}
+                onClick={() => setHoveredPath(path)}
               >
-                <li className="relative py-1 px-3">{name} </li>
+                <li className="py-1 px-3">{name} </li>
               </Link>
             );
           })}
