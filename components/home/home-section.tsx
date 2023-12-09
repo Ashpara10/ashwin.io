@@ -14,15 +14,15 @@ const HomeSection = () => {
   //   });
   //   console.log({ status, error, data });
   // };
-  useEffect(() => {
-    allBlogs.map(async (e) => {
-      await setDoc(doc(db, "posts", e.slug), {
-        slug: e.slug,
-        likes: 0,
-        views: 0,
-      });
-    });
-  }, [allBlogs.length]);
+  // useEffect(() => {
+  //   allBlogs.map(async (e) => {
+  //     await setDoc(doc(db, "posts", e.slug), {
+  //       slug: e.slug,
+  //       likes: 0,
+  //       views: 0,
+  //     });
+  //   });
+  // }, [allBlogs.length]);
 
   const [isInside, setIsInside] = useState(false);
 
@@ -52,16 +52,17 @@ const HomeSection = () => {
 
   return (
     <div className="w-full h-full flex flex-col items-start justify-start mt-16 pl-4 py-10">
-      <div className="mb-8 relative flex gap-x-2 w-[200px] h-[200px] overflow-hidden">
+      <div className="w-full items-center justify-start ">
         <Image
-          className="rounded-3xl w-full transition-all ease-in-out"
-          width={200}
-          height={200}
+          className="rounded-3xl   transition-all ease-in-out"
+          width={700}
+          height={500}
           alt=""
           quality={100}
-          src={`/me/me5.jpg`}
+          src={`/card.svg`}
         />
       </div>
+
       <div
         className="flex flex-col"
         onMouseEnter={() => setIsInside(true)}
