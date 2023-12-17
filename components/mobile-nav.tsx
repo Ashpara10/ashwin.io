@@ -38,6 +38,9 @@ const MobileHeader = () => {
       "/blog": {
         name: "Blog",
       },
+      "/work": {
+        name: "Works",
+      },
     };
     const [hoveredPath, setHoveredPath] = useState(pathname);
     return (
