@@ -1,31 +1,14 @@
-import { allBlogs } from "@/.contentlayer/generated";
-import { db } from "@/lib/firebase";
-import { addDoc, collection, doc, setDoc } from "firebase/firestore";
 import { motion } from "framer-motion";
 import { ArrowDownLeft } from "lucide-react";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import Balancer from "react-wrap-balancer";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
 
 const HomeSection = () => {
-  // const seedData = async (slug: string) => {
-  //   const { status, error, data } = await db.from("post").insert({
-  //     slug: slug,
-  //   });
-  //   console.log({ status, error, data });
-  // };
-  // useEffect(() => {
-  //   allBlogs.map(async (e) => {
-  //     await setDoc(doc(db, "posts", e.slug), {
-  //       slug: e.slug,
-  //       likes: 0,
-  //       views: 0,
-  //     });
-  //   });
-  // }, [allBlogs.length]);
-
+  const urls = ["me5.jpg", "me1.jpg", "me6.jpg", "me2.jpg", "me3.jpg"];
   const [isInside, setIsInside] = useState(false);
-
   const [position, setPosition] = useState<{ x: number; y: number }>({
     x: 0,
     y: 0,
@@ -33,7 +16,6 @@ const HomeSection = () => {
 
   const updatePosition = (event: MouseEvent) => {
     const { clientX, clientY } = event;
-
     setPosition({
       x: clientX,
       y: clientY,
@@ -52,15 +34,19 @@ const HomeSection = () => {
 
   return (
     <div className="w-full h-full flex flex-col items-start justify-start mt-16 pl-4 py-10">
-      <div className="w-full items-center justify-start ">
-        <Image
-          className="rounded-3xl   transition-all ease-in-out"
-          width={700}
-          height={500}
-          alt=""
-          quality={100}
-          src={`/card.svg`}
-        />
+      <div className="mb-6 px-2">
+        <Swiper
+          className="w-[200px] h-[200px] rounded-2xl dark:bg-border bg-gray-200"
+          scrollbar={{ draggable: true }}
+        >
+          {urls.map((e, i) => {
+            return (
+              <SwiperSlide key={i} className="w-full h-full">
+                <Image fill src={`/me/${e}`} alt="" />
+              </SwiperSlide>
+            );
+          })}
+        </Swiper>
       </div>
 
       <div

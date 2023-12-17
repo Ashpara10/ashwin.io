@@ -57,17 +57,17 @@ const Page = () => {
         initial="hidden"
         className="max-w-2xl w-full gap-y-2 flex flex-col items-center justify-center"
       >
-        <h2 className="text-4xl font-bold text-left w-full ">About Me</h2>
+        <h2 className="w-full text-left px-1.5 mt-4 tracking-tighter text-4xl font-bold ">
+          About Me
+        </h2>
         <div className={`w-full overflow-hidden  rounded-3xl`}>
           <Image
             onLoadingComplete={() => setIsLoaded(true)}
-            className={` ${
-              !IsLoaded ? "blur-xl" : "blur-0"
-            } w-full hover:saturate-50 overflow-hidden rounded-2xl  col-span-2`}
+            className={`  w-full overflow-hidden rounded-2xl  col-span-2`}
             width={500}
             height={300}
             alt="me"
-            src={"/assset1.jpg"}
+            src={"/card4.svg"}
           />
         </div>
         <p className="w-full px-2.5 mt-2">
