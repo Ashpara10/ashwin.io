@@ -42,6 +42,20 @@ const MobileHeader = () => {
         name: "Works",
       },
     };
+    const links = {
+      Instagram: {
+        link: "",
+      },
+      Twitter: {
+        link: "",
+      },
+      Linkedin: {
+        link: "",
+      },
+      Github: {
+        link: "",
+      },
+    };
     const [hoveredPath, setHoveredPath] = useState(pathname);
     return (
       <motion.div
@@ -74,13 +88,24 @@ const MobileHeader = () => {
               </Link>
             );
           })}
-          <a
-            target="_blank"
-            className="w-full px-3 py-1 flex items-center justify-between text-lg transition-all  hover:text-neutral-800 rounded-lg dark:hover:text-neutral-200"
-            href="https://github.com/Ashpara10/ashwin.io"
-          >
-            Github
-          </a>
+        </motion.ul>
+        <hr className="w-full border border-gray-200 dark:border-border" />
+
+        <motion.ul className="w-full p-4  flex flex-col items-center justify-start">
+          {Object.entries(links).map(([name, { link }]) => {
+            return (
+              <Link
+                className={`w-full relative rounded-lg flex items-center justify-between text-lg transition-all   
+              
+              `}
+                href={link}
+                key={name}
+                // onClick={() => setHoveredPath(link)}
+              >
+                <li className="py-1 px-3">{name} </li>
+              </Link>
+            );
+          })}
         </motion.ul>
       </motion.div>
     );
