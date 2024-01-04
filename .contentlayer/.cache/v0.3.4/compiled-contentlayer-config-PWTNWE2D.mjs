@@ -1,27 +1,25 @@
+// contentlayer.config.ts
 import {
-  ComputedFields,
   makeSource,
-  defineDocumentType,
+  defineDocumentType
 } from "contentlayer/source-files";
 import remarkGfm from "remark-gfm";
 import rehypeSlug from "rehype-slug";
 import rehypeCodeTitles from "rehype-code-titles";
 import readingTime from "reading-time";
 import rehypePrism from "rehype-prism-plus";
-// import rehypePrettyCode from "rehype-pretty-code";
-const computedFields: ComputedFields = {
+var computedFields = {
   readingTime: { type: "json", resolve: (doc) => readingTime(doc.body.raw) },
   wordCount: {
     type: "number",
-    resolve: (doc) => doc.body.raw.split(/\s+/gu).length,
+    resolve: (doc) => doc.body.raw.split(/\s+/gu).length
   },
   slug: {
     type: "string",
-    resolve: (doc: any) => doc._raw.sourceFileName.replace(/\.mdx$/, ""),
-  },
+    resolve: (doc) => doc._raw.sourceFileName.replace(/\.mdx$/, "")
+  }
 };
-
-const Blog = defineDocumentType(() => ({
+var Blog = defineDocumentType(() => ({
   name: "Blog",
   filePathPattern: `blogs/*.mdx`,
   contentType: "mdx",
@@ -29,11 +27,11 @@ const Blog = defineDocumentType(() => ({
     title: { type: "string", required: true },
     image: { type: "string", required: true },
     createdAt: { type: "string", required: true },
-    tags: { type: "string", required: true },
+    tags: { type: "list", required: true }
   },
-  computedFields,
+  computedFields
 }));
-export default makeSource({
+var contentlayer_config_default = makeSource({
   contentDirPath: "data",
   documentTypes: [Blog],
   mdx: {
@@ -41,8 +39,12 @@ export default makeSource({
     rehypePlugins: [
       rehypeSlug,
       rehypeCodeTitles,
-      rehypePrism,
+      rehypePrism
       // rehypePrettyCode,
-    ],
-  },
+    ]
+  }
 });
+export {
+  contentlayer_config_default as default
+};
+//# sourceMappingURL=compiled-contentlayer-config-PWTNWE2D.mjs.map

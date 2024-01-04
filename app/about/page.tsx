@@ -62,22 +62,23 @@ const Page = () => {
           About Me
         </h2>
         <div className={`w-full overflow-hidden  rounded-3xl`}>
-          <Image
-            onLoadingComplete={() => setIsLoaded(true)}
-            className={`  w-full overflow-hidden rounded-2xl  col-span-2`}
-            width={500}
-            height={300}
-            alt="me"
-            src={"/card4.svg"}
-          />
+          <p className="w-full px-2.5 mt-2">
+            Hey, I&apos;m a computer science student from Indore with a passion
+            for building and creating stuff usefull to the masses.I like
+            programming and football .Currently pursuing my Bachelor&apos;s from
+            Medicaps University
+          </p>
         </div>
-        <p className="w-full px-2.5 mt-2">
-          Hey, I&apos;m a computer science student from Indore with a passion
-          for building and creating stuff usefull to the masses.I like
-          programming and football .Currently pursuing my Bachelor&apos;s from
-          Medicaps University
-        </p>
+        <Image
+          onLoadingComplete={() => setIsLoaded(true)}
+          className={`  max-w-sm p-3 w-full overflow-hidden rounded-2xl  col-span-2`}
+          width={500}
+          height={300}
+          alt="me"
+          src={"/card4.svg"}
+        />
       </motion.div>
+      <div className="mb-10"></div>
     </div>
   );
 };

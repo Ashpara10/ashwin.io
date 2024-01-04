@@ -16,6 +16,7 @@ export type Blog = {
   title: string
   image: string
   createdAt: string
+  tags: string
   /** MDX file body */
   body: MDX
   readingTime: json

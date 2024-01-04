@@ -26,7 +26,8 @@ var Blog = defineDocumentType(() => ({
   fields: {
     title: { type: "string", required: true },
     image: { type: "string", required: true },
-    createdAt: { type: "string", required: true }
+    createdAt: { type: "string", required: true },
+    tags: { type: "string", required: true }
   },
   computedFields
 }));
@@ -46,4 +47,4 @@ var contentlayer_config_default = makeSource({
 export {
   contentlayer_config_default as default
 };
-//# sourceMappingURL=compiled-contentlayer-config-MAAKXKZT.mjs.map
+//# sourceMappingURL=compiled-contentlayer-config-4QTUHHR5.mjs.map
