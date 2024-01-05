@@ -30,7 +30,7 @@ const Page = () => {
         variants={container}
         initial="hidden"
         animate="visible"
-        className="grid grid-cols-1 md:grid-cols-2 mt-20 items-center justify-center"
+        className="max-w-3xl grid grid-cols-1 md:grid-cols-2 mt-20 items-center justify-center"
       >
         {allBlogs.map((data, index) => {
           return (
@@ -39,10 +39,10 @@ const Page = () => {
               // animate="visible"
               variants={item}
               key={index}
-              className="max-w-sm p-3  flex flex-col items-start justify-center m-3"
+              className="w-full p-3  flex flex-col items-start justify-start m-3"
             >
               <Image
-                className="rounded-3xl w-full bg-cover h-[220px] "
+                className="rounded-3xl w-full bg-cover h-[210px] "
                 width={400}
                 height={300}
                 alt=""
