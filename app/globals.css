@@ -78,6 +78,7 @@ pre {
   
   pre {
     overflow-x: auto;
+    @apply scrollbar-thin 
   }
   
   /**

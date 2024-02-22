@@ -1,27 +1,34 @@
 import { allBlogs } from "@/.contentlayer/generated";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import {
   Github,
   Instagram,
   Linkedin,
-  Menu,
-  Moon,
   MoreHorizontal,
-  Sun,
   Twitter,
-  XIcon,
 } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "../ui/dropdown-menu";
 import Link from "next/link";
+import { Variants, motion } from "framer-motion";
+const variants: Variants = {
+  hidden: { opacity: 0, y: 20 },
+  enter: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      staggerChildren: 0.2,
+      delayChildren: 0.025,
+    },
+  },
+};
 
 const navItems = {
   "/": {
@@ -59,9 +66,19 @@ const links = {
 const HomeSection = () => {
   const [blur, setBlur] = useState(true);
   const router = useRouter();
+
   return (
-    <div className="max-w-xl w-full  flex flex-col  ">
-      <div className="w-full flex items-center justify-between">
+    <motion.div
+      variants={variants}
+      initial="hidden"
+      animate="enter"
+      id="home"
+      className="max-w-xl w-full  flex flex-col  "
+    >
+      <motion.div
+        variants={variants}
+        className="w-full flex items-center justify-between"
+      >
         <div className="w-full flex items-center justify-center">
           <Image
             src={"/me/me.jpg"}
@@ -80,7 +97,7 @@ const HomeSection = () => {
                 Ashwin Parande 🌻
               </span>
               <DropdownMenu>
-                <DropdownMenuTrigger>
+                <DropdownMenuTrigger className="focus-within:outline-none">
                   <MoreHorizontal />
                 </DropdownMenuTrigger>
                 <DropdownMenuContent className="px-0 py-2 dark:bg-dark translate-y-6 -translate-x-4 w-52 border dark:border-border rounded-2xl">
@@ -118,17 +135,23 @@ const HomeSection = () => {
             <span className="text-left opacity-80">@ashhhwinnn</span>
           </div>
         </div>
-      </div>
-      <div className="flex flex-col items-start justify-center mt-10">
+      </motion.div>
+      <motion.div
+        variants={variants}
+        className="flex flex-col items-start justify-center mt-10"
+      >
         <span className="text-xl tracking-tighter font-semibold ">
           About Me
         </span>
-        <span className="my-2 w-full opacity-90">
+        <span className="my-2 w-full opacity-90 md:text-base text-sm">
           Crafting powerful and interactive web experiences. Currently pursuing
           my bachelor's degree from Medicaps University, Indore.
         </span>
-      </div>
-      <div className="w-full overflow-hidden mt-6 flex border dark:border-border rounded-lg items-center justify-center">
+      </motion.div>
+      <motion.div
+        variants={variants}
+        className="w-full overflow-hidden mt-6 flex border dark:border-border rounded-lg items-center justify-center"
+      >
         <Image
           src={`/me/me21.jpg`}
           width={520}
@@ -139,8 +162,11 @@ const HomeSection = () => {
             blur ? "blur-md" : "blur-0"
           }`}
         />
-      </div>
-      <ul className="w-full flex flex-col  list-inside list-disc">
+      </motion.div>
+      <motion.ul
+        variants={variants}
+        className="w-full flex flex-col  list-inside list-disc"
+      >
         <span className="text-lg font-semibold my-4">Most viewed posts</span>
         {allBlogs.slice(0, 4).map((data, index) => {
           return (
@@ -153,8 +179,8 @@ const HomeSection = () => {
             </li>
           );
         })}
-      </ul>
-    </div>
+      </motion.ul>
+    </motion.div>
   );
 };
 

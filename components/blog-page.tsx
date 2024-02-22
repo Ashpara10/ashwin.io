@@ -8,13 +8,14 @@ import { MdxComponent } from "./mdx-components";
 import { doc, increment, setDoc, updateDoc } from "firebase/firestore";
 import { db } from "@/lib/firebase";
 import Views from "./views";
-import { Heart } from "lucide-react";
+import { ArrowLeft, Copy, Dot, Twitter } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 const BlogPage = ({ data }: { data: Blog }) => {
   const { title, image, readingTime, createdAt, wordCount, slug } = data;
   const Content = useMDXComponent(data?.body.code);
   const [IsImageLoaded, setIsImageLoaded] = useState(true);
-
+  const router = useRouter();
   useEffect(() => {
     const incrementViews = async () => {
       await updateDoc(doc(db, "posts", data.slug), {
@@ -26,17 +27,36 @@ const BlogPage = ({ data }: { data: Blog }) => {
 
   return (
     <article className="w-full  max-w-2xl flex flex-col items-center justify-center">
-      <span className="w-full gap-x-3 mb-3 flex items-center justify-start opacity-90 text-left">
-        {new Date(createdAt).toDateString()}
-      </span>
-      <h1 className="text-3xl md:text-4xl font-bold w-full mb-2 ">
-        <Balancer ratio={0.5}>{title}</Balancer>
-      </h1>
-      <div className=" mb-4 opacity-90 px-2.5 w-full flex items-center justify-between">
-        <div className="flex gap-x-2 items-center justify-center">
-          <span className="text-lg ">{readingTime.text}</span>
-          {"  |  "}
-          <span className="text-lg ">{wordCount} words</span>
+      <div className="w-full max-w-2xl mb-8 flex items-center justify-between">
+        <button
+          onClick={() => router.back()}
+          className="p-2 rounded-full border dark:border-border"
+        >
+          <ArrowLeft />
+        </button>
+        <div className="w-fit flex items-center opacity-80 justify-center gap-x-4">
+          <button className="mx-2">
+            <Copy />
+          </button>
+          <button className="mx-2">
+            <Twitter />
+          </button>
+        </div>
+      </div>
+
+      <Balancer
+        className="text-2xl md:text-3xl  font-bold w-full mb-3 "
+        as={"h1"}
+        ratio={0.5}
+      >
+        {title}
+      </Balancer>
+
+      <div className=" mb-3 mt-2 opacity-80 px-2.5 w-full flex items-center justify-between">
+        <div className="flex  gap-x-1 items-center justify-center">
+          <span className="">{readingTime.text}</span>
+          <Dot />
+          <span className="">{wordCount} words</span>
         </div>
         <div className="flex items-center justify-center gap-x-2">
           {/* <Heart /> */}
