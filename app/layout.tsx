@@ -21,13 +21,11 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${gro.className} flex  w-full text-black/90 bg-light dark:text-beige dark:bg-dark`}
+        className={`${gro.className} flex  w-full text-black/90 bg-light dark:text-light  dark:bg-dark`}
       >
         <Providers>
-          <Header />
-          <MobileHeader />
-
-          <main className="w-full  px-4 min-h-screen  ">{children}</main>
+          {/* <MobileHeader /> */}
+          <main className="w-full  min-h-screen px-4 mt-10">{children} </main>
         </Providers>
       </body>
     </html>

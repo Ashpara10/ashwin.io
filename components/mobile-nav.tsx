@@ -1,11 +1,29 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { Variants, motion } from "framer-motion";
-import { Menu, Moon, Sun, XIcon } from "lucide-react";
+import {
+  Github,
+  Instagram,
+  Linkedin,
+  Menu,
+  Moon,
+  MoreHorizontal,
+  Sun,
+  Twitter,
+  XIcon,
+} from "lucide-react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { useTheme } from "next-themes";
 import { useClickAway } from "@uidotdev/usehooks";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "./ui/dropdown-menu";
 
 const variants: Variants = {
   initial: { x: 0, y: -60 },
@@ -22,94 +40,43 @@ const MobileHeader = () => {
   const ref = useClickAway(() => {
     setShow(false);
   });
-
-  const DropDownMenu = () => {
-    let pathname = usePathname() || "/";
-    if (pathname.includes("/blog/")) {
-      pathname = "/blog";
-    }
-    const navItems = {
-      "/": {
-        name: "Home",
-      },
-      "/about": {
-        name: "About",
-      },
-      "/blog": {
-        name: "Blog",
-      },
-      "/work": {
-        name: "Works",
-      },
-    };
-    const links = {
-      Instagram: {
-        link: "",
-      },
-      Twitter: {
-        link: "",
-      },
-      Linkedin: {
-        link: "",
-      },
-      Github: {
-        link: "",
-      },
-    };
-    const [hoveredPath, setHoveredPath] = useState(pathname);
-    return (
-      <motion.div
-        ref={ref as any}
-        initial={{ scale: 0.1, opacity: 0 }}
-        animate={{
-          scale: 1,
-          opacity: 1,
-          transition: {
-            //   delay: 0.5,
-            type: "ease",
-          },
-        }}
-        exit={{ scale: 0.1, opacity: 0 }}
-        className="absolute    w-52    rounded-3xl bg-gray-100 border border-gray-200 dark:border-border dark:bg-dark overflow-hidden top-20 right-4 z-10"
-      >
-        <motion.ul className="w-full p-4  flex flex-col items-center justify-start">
-          {Object.entries(navItems).map(([path, { name }]) => {
-            const isActive = path === pathname;
-            return (
-              <Link
-                className={`w-full relative rounded-lg flex items-center justify-between text-lg transition-all   
-                ${isActive && "dark:bg-border bg-gray-200 "}
-                `}
-                href={path}
-                key={path}
-                onClick={() => setHoveredPath(path)}
-              >
-                <li className="py-1 px-3">{name} </li>
-              </Link>
-            );
-          })}
-        </motion.ul>
-        <hr className="w-full border border-gray-200 dark:border-border" />
-
-        <motion.ul className="w-full p-4  flex flex-col items-center justify-start">
-          {Object.entries(links).map(([name, { link }]) => {
-            return (
-              <Link
-                className={`w-full relative rounded-lg flex items-center justify-between text-lg transition-all   
-              
-              `}
-                href={link}
-                key={name}
-                // onClick={() => setHoveredPath(link)}
-              >
-                <li className="py-1 px-3">{name} </li>
-              </Link>
-            );
-          })}
-        </motion.ul>
-      </motion.div>
-    );
+  const navItems = {
+    "/": {
+      name: "Home",
+    },
+    "/about": {
+      name: "About",
+    },
+    "/blog": {
+      name: "Blog",
+    },
+    "/work": {
+      name: "Works",
+    },
   };
+  const links = {
+    Instagram: {
+      link: "",
+      icon: <Instagram className="opacity-60 text-sm mx-2" />,
+    },
+    Twitter: {
+      link: "",
+      icon: <Twitter className="opacity-60 text-sm mx-2" />,
+    },
+    Linkedin: {
+      link: "",
+      icon: <Linkedin className="opacity-60 text-sm mx-2" />,
+    },
+    Github: {
+      link: "",
+      icon: <Github className="opacity-60 text-sm mx-2" />,
+    },
+  };
+  let pathname = usePathname() || "/";
+  if (pathname.includes("/blog/")) {
+    pathname = "/blog";
+  }
+  const [hoveredPath, setHoveredPath] = useState(pathname);
 
   return (
     <motion.header
@@ -117,39 +84,26 @@ const MobileHeader = () => {
       animate="enter"
       transition={{ duration: 0.8, type: "easeInOut" }}
       variants={variants}
-      className="flex md:hidden backdrop-blur-lg  px-4 py-2.5 items-center justify-end z-10 fixed top-0 right-0 left-0 "
+      className=" w-full flex px-4 py-2.5 items-center justify-center z-10 absolute top-0"
     >
-      {show && <DropDownMenu />}
-
-      <div className="flex space-x-3">
+      <nav className="max-w-2xl   px-4 w-full flex items-center justify-end">
         {hasMounted && theme === "dark" ? (
           <button
             onClick={() => setTheme("light")}
-            className="p-2 rounded-2xl text-sm bg-orange-200 text-black"
+            className="p-2 mr-3 rounded-2xl opacity-80 text-sm "
           >
             <Sun className="text-sm" />
           </button>
         ) : (
           <button
             onClick={() => setTheme("dark")}
-            className={`p-2  rounded-2xl text-sm bg-purple-700 text-white`}
+            className="p-2 mr-3 opacity-80 rounded-2xl text-sm "
           >
             {" "}
             <Moon className="text-sm" />
           </button>
         )}
-
-        <button
-          onClick={() => setShow(!show)}
-          className={`border flex items-center justify-center rounded-lg  border-gray-200 dark:border-border`}
-        >
-          {show ? (
-            <XIcon className="opacity-90 m-1.5" />
-          ) : (
-            <Menu className="opacity-90 m-1.5" />
-          )}
-        </button>
-      </div>
+      </nav>
     </motion.header>
   );
 };

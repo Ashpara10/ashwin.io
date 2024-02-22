@@ -13,7 +13,7 @@ const Views = ({ slug }: { slug: string }) => {
   }, []);
   return (
     <span className="flex items-center justify-center gap-x-1">
-      views: {views}
+      <Eye /> {views}
     </span>
   );
 };
