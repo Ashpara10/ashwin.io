@@ -30,18 +30,10 @@ const BlogPage = ({ data }: { data: Blog }) => {
       <div className="w-full max-w-2xl mb-8 flex items-center justify-between">
         <button
           onClick={() => router.back()}
-          className="p-2 rounded-full border dark:border-border"
+          className="p-2 rounded-full  border dark:border-border"
         >
-          <ArrowLeft />
+          <ArrowLeft className="opacity-80" />
         </button>
-        <div className="w-fit flex items-center opacity-80 justify-center gap-x-4">
-          <button className="mx-2">
-            <Copy />
-          </button>
-          <button className="mx-2">
-            <Twitter />
-          </button>
-        </div>
       </div>
 
       <Balancer

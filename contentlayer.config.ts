@@ -28,14 +28,30 @@ const Blog = defineDocumentType(() => ({
   fields: {
     title: { type: "string", required: true },
     image: { type: "string", required: true },
+    createdAt: { type: "date", required: true },
+    icon: { type: "string", required: true },
+    description: { type: "string", required: true },
+  },
+  computedFields,
+}));
+
+const Work = defineDocumentType(() => ({
+  name: "Work",
+  filePathPattern: `works/*.mdx`,
+  contentType: "mdx",
+  fields: {
+    name: { type: "string", required: true },
+    image: { type: "string", required: true },
     createdAt: { type: "string", required: true },
     tags: { type: "string", required: true },
+    url: { type: "string", required: false },
+    description: { type: "string", required: true },
   },
   computedFields,
 }));
 export default makeSource({
   contentDirPath: "data",
-  documentTypes: [Blog],
+  documentTypes: [Blog, Work],
   mdx: {
     remarkPlugins: [remarkGfm],
     rehypePlugins: [

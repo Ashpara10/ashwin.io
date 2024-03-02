@@ -7,10 +7,9 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
     <AnimateWrapper>
       <div
         suppressHydrationWarning
-        className=" w-full flex  items-center justify-center min-h-screen my-24 "
+        className=" w-full flex  items-center justify-center min-h-screen  "
       >
-        {/* <aside className="h-screen w-60 ">Sidebar</aside> */}
-        <main className=" w-full flex flex-col items-center justify-center">
+        <main className=" w-full flex flex-col items-center justify-start">
           {children}
         </main>
       </div>

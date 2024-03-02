@@ -24,8 +24,9 @@ export default function RootLayout({
         className={`${gro.className} flex  w-full text-black/90 bg-light dark:text-light  dark:bg-dark`}
       >
         <Providers>
+          <Header />
           {/* <MobileHeader /> */}
-          <main className="w-full  min-h-screen px-4 mt-10">{children} </main>
+          <main className="w-full  min-h-screen px-4 mt-20">{children} </main>
         </Providers>
       </body>
     </html>

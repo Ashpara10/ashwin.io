@@ -18,6 +18,7 @@ import {
 } from "../ui/dropdown-menu";
 import Link from "next/link";
 import { Variants, motion } from "framer-motion";
+import Balancer from "react-wrap-balancer";
 const variants: Variants = {
   hidden: { opacity: 0, y: 20 },
   enter: {
@@ -27,39 +28,6 @@ const variants: Variants = {
       staggerChildren: 0.2,
       delayChildren: 0.025,
     },
-  },
-};
-
-const navItems = {
-  "/": {
-    name: "Home",
-  },
-  "/about": {
-    name: "About",
-  },
-  "/blog": {
-    name: "Blog",
-  },
-  "/work": {
-    name: "Works",
-  },
-};
-const links = {
-  Instagram: {
-    link: "",
-    icon: <Instagram className="opacity-60 text-sm mx-2" />,
-  },
-  Twitter: {
-    link: "",
-    icon: <Twitter className="opacity-60 text-sm mx-2" />,
-  },
-  Linkedin: {
-    link: "",
-    icon: <Linkedin className="opacity-60 text-sm mx-2" />,
-  },
-  Github: {
-    link: "",
-    icon: <Github className="opacity-60 text-sm mx-2" />,
   },
 };
 
@@ -81,8 +49,8 @@ const HomeSection = () => {
       >
         <div className="w-full flex items-center justify-center">
           <Image
-            src={"/me/me.jpg"}
-            className="w-fit aspect-square rounded-full"
+            src={"/me/cat.jpg"}
+            className="w-fit aspect-square rounded-full border border-gray-300 dark:border-border"
             alt="pfp"
             objectFit="contain"
             width={60}
@@ -90,49 +58,16 @@ const HomeSection = () => {
             quality={100}
           />
 
-          <div className="w-full ml-3 flex flex-col items-start justify-center">
+          <div className="w-full ml-4 flex flex-col items-start justify-center">
             <div className="w-full flex items-center justify-between">
               <span className=" text-left text-xl font-semibold tracking-tighter">
                 {" "}
                 Ashwin Parande 🌻
               </span>
-              <DropdownMenu>
-                <DropdownMenuTrigger className="focus-within:outline-none">
-                  <MoreHorizontal />
-                </DropdownMenuTrigger>
-                <DropdownMenuContent className="px-0 py-2 dark:bg-dark translate-y-6 -translate-x-4 w-52 border dark:border-border rounded-2xl">
-                  {Object.entries(navItems).map(([path, { name }]) => {
-                    return (
-                      <React.Fragment key={path}>
-                        <DropdownMenuItem
-                          className="text-md px-3 py-1.5"
-                          key={path}
-                        >
-                          <Link href={path}>{name}</Link>
-                        </DropdownMenuItem>
-                      </React.Fragment>
-                    );
-                  })}
-
-                  <DropdownMenuSeparator className=" dark:bg-border bg-gray-200/70" />
-                  {Object.entries(links).map(([name, { icon, link }]) => {
-                    return (
-                      <React.Fragment key={name}>
-                        <DropdownMenuItem
-                          key={name}
-                          className="text-md px-3 py-1.5"
-                        >
-                          <Link href={link} target="_blank">
-                            {name}
-                          </Link>
-                        </DropdownMenuItem>
-                      </React.Fragment>
-                    );
-                  })}
-                </DropdownMenuContent>
-              </DropdownMenu>
             </div>
-            <span className="text-left opacity-80">@ashhhwinnn</span>
+            <span className="text-left opacity-80">
+              Full-stack web developer
+            </span>
           </div>
         </div>
       </motion.div>
@@ -153,7 +88,7 @@ const HomeSection = () => {
         className="w-full overflow-hidden mt-6 flex border dark:border-border rounded-lg items-center justify-center"
       >
         <Image
-          src={`/me/me21.jpg`}
+          src={`/me/me.jpg`}
           width={520}
           height={520}
           alt=""
@@ -163,23 +98,34 @@ const HomeSection = () => {
           }`}
         />
       </motion.div>
-      <motion.ul
+      <motion.span variants={variants} className="text-lg font-semibold my-4">
+        Most Viewed Articles
+      </motion.span>
+      <motion.div
         variants={variants}
-        className="w-full flex flex-col  list-inside list-disc"
+        className="w-full grid grid-cols-1 gap-y-3"
       >
-        <span className="text-lg font-semibold my-4">Most viewed posts</span>
         {allBlogs.slice(0, 4).map((data, index) => {
           return (
-            <li
+            <div
               key={index}
-              className=" opacity-90 tracking-tight   hover:underline"
-              onClick={() => router.push(`/blog/${data?.slug}`)}
+              className="flex w-full  items-center gap-x-2 justify-center rounded-lg "
             >
-              {data?.title}
-            </li>
+              <div className=" w-full flex  items-center justify-between">
+                <Balancer
+                  onClick={() => router.push(`/blog/${data?.slug}`)}
+                  className="text-lg tracking-tight  hover:after:content-['__↗']"
+                >
+                  {data?.title}
+                </Balancer>
+                <span className="text-sm mb-1 opacity-80">
+                  {new Date(data?.createdAt).toDateString()}
+                </span>
+              </div>
+            </div>
           );
         })}
-      </motion.ul>
+      </motion.div>
     </motion.div>
   );
 };

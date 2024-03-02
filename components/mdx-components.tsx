@@ -44,7 +44,7 @@ const StyledHeading3 = (props: any) => {
 
 const UnorderedList = (props: any) => {
   return (
-    <ul className="w-full list-outside list-disc flex gap-y-3.5 my-2  flex-col   ">
+    <ul className="w-full list-inside list-disc flex gap-y-3 my-2  flex-col   ">
       {props.children}
     </ul>
   );
@@ -61,7 +61,7 @@ const RoundedImage = (props: any) => {
   const [IsImageLoaded, setIsImageLoaded] = useState(true);
 
   return (
-    <div className=" w-full overflow-hidden rounded-xl bg-gray-200 ">
+    <div className="border dark:border-border border-gray-200 w-full overflow-hidden rounded-xl bg-gray-200 ">
       <Image
         alt=""
         className={`
