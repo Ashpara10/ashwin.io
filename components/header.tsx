@@ -73,14 +73,14 @@ const Header = () => {
           {hasMounted && theme === "dark" ? (
             <button
               onClick={() => setTheme("light")}
-              className="p-2 rounded-xl text-sm bg-orange-200 text-black"
+              className="p-2 rounded-xl focus-visible:outline-none text-sm bg-orange-200 text-black"
             >
               <Sun className="text-sm" />
             </button>
           ) : (
             <button
               onClick={() => setTheme("dark")}
-              className="p-2 rounded-xl text-sm bg-purple-700 text-white"
+              className="p-2 rounded-xl focus-visible:outline-none text-sm bg-purple-700 text-white"
             >
               {" "}
               <Moon className="text-sm" />

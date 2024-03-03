@@ -11,7 +11,7 @@ import { useRouter } from "next/navigation";
 const WorkPage = ({ data }: { data: Work }) => {
   const { name, image, readingTime, createdAt, wordCount, slug } = data;
   const Content = useMDXComponent(data?.body.code);
-  const [IsImageLoaded, setIsImageLoaded] = useState(true);
+
   const router = useRouter();
 
   return (
@@ -32,9 +32,6 @@ const WorkPage = ({ data }: { data: Work }) => {
           >
             <Copy />
           </button>
-          <button className="mx-2">
-            <Twitter />
-          </button>
         </div>
       </div>
       <div className="w-full flex items-center justify-start gap-x-3 px-3 mb-3">
@@ -42,11 +39,10 @@ const WorkPage = ({ data }: { data: Work }) => {
           alt=""
           className={`
           duration-700 ease-in-out group-hover:opacity-75
-          ${IsImageLoaded ? "blur-2xl " : " blur-0"})`}
+          `}
           src={image}
           width={45}
           height={45}
-          onLoadingComplete={() => setIsImageLoaded(false)}
         />
 
         <Balancer

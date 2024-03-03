@@ -2,23 +2,9 @@ import { allBlogs } from "@/.contentlayer/generated";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
-import {
-  Github,
-  Instagram,
-  Linkedin,
-  MoreHorizontal,
-  Twitter,
-} from "lucide-react";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "../ui/dropdown-menu";
-import Link from "next/link";
 import { Variants, motion } from "framer-motion";
 import Balancer from "react-wrap-balancer";
+
 const variants: Variants = {
   hidden: { opacity: 0, y: 20 },
   enter: {
@@ -75,6 +61,16 @@ const HomeSection = () => {
         variants={variants}
         className="flex flex-col items-start justify-center mt-10"
       >
+        {/* <div className="grid grid-cols-12 gap-2 mb-6 ">
+          {[...Array(120)].map((_, i) => {
+            return (
+              <div
+                className="w-6 h-6 border dark:border-[#353535] dark:bg-[#282828] rounded-lg"
+                key={i}
+              ></div>
+            );
+          })}
+        </div> */}
         <span className="text-xl tracking-tighter font-semibold ">
           About Me
         </span>
