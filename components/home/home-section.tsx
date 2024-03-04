@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import { Variants, motion } from "framer-motion";
 import Balancer from "react-wrap-balancer";
+import ImageGrid from "./grid";
 
 const variants: Variants = {
   hidden: { opacity: 0, y: 20 },
@@ -27,7 +28,7 @@ const HomeSection = () => {
       initial="hidden"
       animate="enter"
       id="home"
-      className="max-w-xl w-full  flex flex-col  "
+      className="max-w-2xl w-full  flex flex-col  "
     >
       <motion.div
         variants={variants}
@@ -81,9 +82,9 @@ const HomeSection = () => {
       </motion.div>
       <motion.div
         variants={variants}
-        className="w-full overflow-hidden mt-6 flex border dark:border-border rounded-lg items-center justify-center"
+        className="w-full overflow-hidden mt-6 flex  rounded-lg items-center justify-center"
       >
-        <Image
+        {/* <Image
           src={`/me/me.jpg`}
           width={520}
           height={520}
@@ -92,7 +93,8 @@ const HomeSection = () => {
           className={`rounded-lg transition-all delay-75 ease-in-out  w-full  ${
             blur ? "blur-md" : "blur-0"
           }`}
-        />
+        /> */}
+        <ImageGrid />
       </motion.div>
       <motion.span variants={variants} className="text-lg font-semibold my-4">
         Most Viewed Articles

@@ -66,8 +66,9 @@ const Header = () => {
   }, []);
   const [hoveredPath, setHoveredPath] = useState(pathname);
   const router = useRouter();
+
   return (
-    <header className="fixed top-0 w-full flex items-center justify-center z-20 backdrop-blur-lg">
+    <header className="fixed top-0 w-full flex items-center justify-center z-20 backdrop-blur-md">
       <nav className=" mx-2  overflow-hidden   py-2.5  max-w-2xl  w-full flex items-center justify-end">
         <div className="flex items-center justify-center gap-x-2">
           {hasMounted && theme === "dark" ? (

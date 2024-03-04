@@ -9,7 +9,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
         suppressHydrationWarning
         className=" w-full flex  items-center justify-center min-h-screen  "
       >
-        <main className=" w-full flex flex-col items-center justify-start">
+        <main className=" w-full flex flex-col items-center justify-start mb-24">
           {children}
         </main>
       </div>
