@@ -10,15 +10,15 @@ import { useRouter } from "next/navigation";
 import Views from "../views";
 
 const variants: Variants = {
-  hidden: { opacity: 0, y: 30 },
+  hidden: { opacity: 0, y: 50 },
   enter: {
     opacity: 1,
     y: 0,
     transition: {
       type: "tween",
       duration: 0.5,
-      staggerChildren: 0.2,
-      delayChildren: 0.025,
+      staggerChildren: 0.5,
+      // delayChildren: 0.025,
     },
   },
 };
@@ -46,13 +46,11 @@ const BlogSection = () => {
       onMouseLeave={() => setIsInside(false)}
       className="w-full  mt-8 mb-8 max-w-2xl flex flex-col items-center justify-center"
     >
-      <motion.h2
-        variants={variants}
-        className="w-full px-2  mb-3 tracking-tighter  text-left text-xl font-semibold "
-      >
-        Most viewed post
-      </motion.h2>
+      <h2 className="w-full px-2  mb-3 tracking-tighter  text-left text-xl font-semibold ">
+        Most viewed Articles
+      </h2>
       <motion.ul
+        variants={variants}
         className="w-full  snap-mandatory flex overflow-x-scroll scrollbar-none   items-center justify-start gap-x-3   px-2"
         // spaceBetween={50}
         // slidesPerView={3}

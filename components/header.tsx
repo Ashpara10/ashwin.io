@@ -62,7 +62,7 @@ const Header = () => {
 
   return (
     <header className="fixed top-0 w-full flex items-center justify-center z-20 backdrop-blur-md">
-      <nav className=" mx-2  overflow-hidden   py-2.5  max-w-2xl  w-full flex items-center justify-end">
+      <nav className=" mx-2 px-2 overflow-hidden   py-2.5  max-w-2xl  w-full flex items-center justify-end">
         <div className="flex items-center justify-center gap-x-2">
           {hasMounted && theme === "dark" ? (
             <button
@@ -89,8 +89,8 @@ const Header = () => {
           {show && (
             <motion.div
               className=" z-30 dark:bg-dark bg-white  rounded-3xl w-52 py-3  border border-gray-200/70 dark:border-border fixed top-16 "
-              initial={{ opacity: 0, translateY: -450 }}
-              animate={{ translateY: 0, opacity: 1 }}
+              initial={{ opacity: 0, translateY: -450, translateX: -60 }}
+              animate={{ translateY: 0, opacity: 1, translateX: -60 }}
               exit={{ opacity: 0, translateY: -450 }}
               transition={{ type: "tween" }}
             >
