@@ -1,75 +1,65 @@
 ---
-title: Must know Typescript concept for begginers
-image: /golang.webp
-createdAt: 2022-10-02
-description: understanding important concepts in typescript by implementing a In-Memory key value store
+title: Stack implementation using TypeScript
+image: /blog/stack.webp
+createdAt: 2024-03-05
+description: Implementing a stack in typescript using interfaces and OOP
+icon: /ts.jpg
 ---
 
-# Creating a PlanetScale Database
+# Stack and its operations
 
-- Prevent SQL injection
-- How to create a PScale Db
-- Quering from a table
+A stack is a linear data structure that uses LIFO (Last in first out) order. Stacks are
+commonly used in memory managament, expression evaluation, recursion etc
 
-note[^1]
+Stacks mainly comprise of two basic operations **push** & **pop** but certain implementation may allow more advanced operations
 
-[^1]: Big note.
+- **push()** :add an item into the stack
+- **pop()** :removes the top-most item from the stack
+- **display()** :for logging the values inside the stack
+- **size()** :to get the space occupied by the stack
 
-## Strikethrough
-
-~one~ or ~~two~~ tildes.
-
-```tsx:blog-card.tsx
-import { Blog } from "@/.contentlayer/generated";
-import Image from "next/image";
-import Link from "next/link";
-import React from "react";
-
-const BlogCard = ({ data }: { data: Blog }) => {
-  const { image, title, slug } = data;
-  return (
-    <article className="w-full  border border-gray-300 dark:border-border max-w-sm rounded-xl">
-      <div className="flex flex-col items-center justify-center px-4 py-6">
-        <Link href={`/blog/${slug}`}>
-          <h2 className="w-full text-2xl font-semibold ">{title}</h2>
-        </Link>
-      </div>
-    </article>
-  );
-};
-
-export default BlogCard;
-
+```ts:stack.ts
+interface IStack<T> {
+  push(T: any): void;
+  pop(): T | undefined | null;
+  size(): number;
+  display(): void;
+}
 
 ```
 
-# Awesome Typescript classes
+I have used interfaces,generics and classes for this implementation
 
-```tsx:Types.tsx
-enum Note {
-  Error,
-  Loading,
-  Success,
+```ts:stack.ts
+class Stack<T> implements IStack<T>{
+  private storage: T[] = [];
+  private capacity: number = 0;
+  constructor(size: number) {
+    this.capacity = size;
+  }
+  push(item: T) {
+    if (this.storage.length === this.capacity) {
+      throw new Error("Overflow")
+    }
+    this.storage.push(item)
+  }
+  pop() {
+    return this.storage.pop()
+  }
+  size() {
+    return this.storage.length
+  }
+  display() {
+    console.log(this.storage)
+  }
 }
-// types
-type Note{
-  title:string,
-  content:string,
-  published:boolean
-  createdAt:string,
-  updatedAt:string,
-  slug:string
-}
-const Demo=({note}:{note:Note})=>{
-  return <h1 className="text-2xl font-bold">{note.title}</h1>
-}
+
+const stack = new Stack(3)
+stack.push(1)
+stack.push(11)
+stack.push(124)
+stack.display()
+stack.pop()
+stack.display()
+
 ```
-
-## Why i transitioned to Typescript and why you should too!
-
-- **Typescript** - provides its retrictions and helps to identify bugs during development of your app.
-- **Security** -Why you should use TypeScript over [JavaScript](http://vitejs.dev)?
-- Image result for why to use typescript
-  In contrast to JavaScript, TypeScript code is more reliable and easier to refactor. This enables developers to evade errors and do rewrites much easier.
-
-You can [view the entire source code here](https://github.com/leerob/youtube-to-mp3). Happy coding! 😄

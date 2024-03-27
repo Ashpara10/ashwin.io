@@ -3,15 +3,15 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import { Variants, motion } from "framer-motion";
-import Balancer from "react-wrap-balancer";
-import ImageGrid from "./grid";
 
 const variants: Variants = {
-  hidden: { opacity: 0, y: 20 },
+  hidden: { opacity: 0, y: 30 },
   enter: {
     opacity: 1,
     y: 0,
     transition: {
+      type: "tween",
+      duration: 0.5,
       staggerChildren: 0.2,
       delayChildren: 0.025,
     },
@@ -39,7 +39,7 @@ const HomeSection = () => {
             src={"/me/cat.jpg"}
             className="w-fit aspect-square rounded-full border border-gray-300 dark:border-border"
             alt="pfp"
-            objectFit="contain"
+            style={{ objectFit: "cover" }}
             width={60}
             height={60}
             quality={100}
@@ -62,16 +62,6 @@ const HomeSection = () => {
         variants={variants}
         className="flex flex-col items-start justify-center mt-10"
       >
-        {/* <div className="grid grid-cols-12 gap-2 mb-6 ">
-          {[...Array(120)].map((_, i) => {
-            return (
-              <div
-                className="w-6 h-6 border dark:border-[#353535] dark:bg-[#282828] rounded-lg"
-                key={i}
-              ></div>
-            );
-          })}
-        </div> */}
         <span className="text-xl tracking-tighter font-semibold ">
           About Me
         </span>
@@ -84,8 +74,8 @@ const HomeSection = () => {
         variants={variants}
         className="w-full overflow-hidden mt-6 flex  rounded-lg items-center justify-center"
       >
-        {/* <Image
-          src={`/me/me.jpg`}
+        <Image
+          src={`/p.jpg`}
           width={520}
           height={520}
           alt=""
@@ -93,36 +83,7 @@ const HomeSection = () => {
           className={`rounded-lg transition-all delay-75 ease-in-out  w-full  ${
             blur ? "blur-md" : "blur-0"
           }`}
-        /> */}
-        <ImageGrid />
-      </motion.div>
-      <motion.span variants={variants} className="text-lg font-semibold my-4">
-        Most Viewed Articles
-      </motion.span>
-      <motion.div
-        variants={variants}
-        className="w-full grid grid-cols-1 gap-y-3"
-      >
-        {allBlogs.slice(0, 4).map((data, index) => {
-          return (
-            <div
-              key={index}
-              className="flex w-full  items-center gap-x-2 justify-center rounded-lg "
-            >
-              <div className=" w-full flex  items-center justify-between">
-                <Balancer
-                  onClick={() => router.push(`/blog/${data?.slug}`)}
-                  className="text-lg tracking-tight  hover:after:content-['__↗']"
-                >
-                  {data?.title}
-                </Balancer>
-                <span className="text-sm mb-1 opacity-80">
-                  {new Date(data?.createdAt).toDateString()}
-                </span>
-              </div>
-            </div>
-          );
-        })}
+        />
       </motion.div>
     </motion.div>
   );

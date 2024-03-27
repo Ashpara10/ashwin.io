@@ -11,11 +11,7 @@ const Views = ({ slug }: { slug: string }) => {
     });
     return () => unsub();
   }, []);
-  return (
-    <span className="flex items-center justify-center gap-x-1">
-      {views} views
-    </span>
-  );
+  return <>{views} </>;
 };
 
 export default Views;
