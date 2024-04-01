@@ -20,6 +20,9 @@ const navItems = {
   "/works": {
     name: "Works",
   },
+  "/guestbook": {
+    name: "Guestbook",
+  },
 };
 const links = {
   Instagram: {
@@ -56,9 +59,6 @@ const Header = () => {
 
   const router = useRouter();
   const controls = useAnimation();
-  // useEffect(()=>{
-
-  // })
 
   return (
     <header className="fixed top-0 w-full flex items-center justify-center z-20 backdrop-blur-md">
@@ -104,16 +104,10 @@ const Header = () => {
             {Object.entries(navItems).map(([path, { name }]) => {
               return (
                 <motion.div
-                  className="text-md px-3 flex items-center justify-start gap-x-0.5 w-full first:border-none border-t border-gray-200/70 dark:border-border py-2 focus:dark:bg-border"
+                  className="text-md px-4 flex items-center justify-start gap-x-0.5 w-full first:border-none border-t border-gray-200/70 dark:border-border py-2 focus:dark:bg-border"
                   key={path}
                   onClick={() => router.push(path)}
                 >
-                  {/* <Dot
-                      className="w-6 h-6"
-                      style={{
-                        visibility: pathname === path ? "visible" : "hidden",
-                      }}
-                    />{" "} */}
                   {name}
                 </motion.div>
               );
@@ -123,7 +117,7 @@ const Header = () => {
               return (
                 <motion.div
                   key={name}
-                  className="text-md px-3 first:border-none border-t flex items-center justify-start gap-x-0.5 border-gray-200/70 dark:border-border py-1.5 focus:dark:bg-border"
+                  className="text-md px-4 first:border-none border-t flex items-center justify-start gap-x-0.5 border-gray-200/70 dark:border-border py-1.5 focus:dark:bg-border"
                 >
                   <Link href={link} target="_blank">
                     {name}

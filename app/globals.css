@@ -7,6 +7,10 @@ html{
     @apply scrollbar-none select-none
 }
 
+input{
+  @apply bg-transparent focus-visible:outline-none
+}
+
 pre {
     @apply bg-transparent rounded-b-xl py-3 px-4  border border-gray-200 dark:border-border overflow-x-scroll max-w-2xl
   }

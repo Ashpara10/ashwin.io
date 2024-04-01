@@ -52,10 +52,6 @@ const BlogSection = () => {
       <motion.ul
         variants={variants}
         className="w-full  snap-mandatory flex overflow-x-scroll scrollbar-none   items-center justify-start gap-x-3   px-2"
-        // spaceBetween={50}
-        // slidesPerView={3}
-        // onSlideChange={() => console.log("slide change")}
-        // onSwiper={(swiper) => console.log(swiper)}
       >
         {allBlogs.map((data, index) => {
           return (
@@ -77,7 +73,7 @@ const BlogSection = () => {
                 <Eye className=" w-5 h-6 mr-2 opacity-80" />
                 <Views slug={data?.slug} />
               </div>
-              <div className=" group-hover:flex hidden transition-all   absolute bottom-3 right-4 items-center justify-between ">
+              <div className=" group-hover:flex opacity-0 group-hover:opacity-100 hidden transition-all ease-in-out duration-75 delay-75  absolute bottom-3 right-4 items-center justify-between ">
                 <div className="rounded-full p-1 dark:bg-white dark:text-black bg-black text-white">
                   <ArrowRight className="w-6 h-6 -rotate-45 " />
                 </div>
