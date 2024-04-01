@@ -9,9 +9,8 @@ export const authOptions: NextAuthOptions = {
 
   providers: [
     GoogleProvider({
-      clientId:
-        "978783310500-bg27l8neqsfb10tedo2246fq1jb0mmf2.apps.googleusercontent.com",
-      clientSecret: "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",
+      clientId: process?.env?.GOOGLE_ID as string,
+      clientSecret: process?.env?.GOOGLE_SECRET as string,
     }),
   ],
 };
