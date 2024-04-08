@@ -59,7 +59,7 @@ const BlogSection = () => {
               onMouseEnter={() => setActive(index)}
               onMouseLeave={() => setActive(null)}
               key={index}
-              className="flex snap-center border min-h-[140px] relative group min-w-[200px] rounded-3xl border-gray-300/80 dark:border-border p-3 w-full bg-white dark:bg-border flex-col items-center justify-between  my-1 gap-x-1      "
+              className="flex snap-center border min-h-[140px] relative group min-w-[200px] rounded-3xl border-gray-300/80 dark:border-border p-3 w-full bg-white dark:bg-dark flex-col items-center justify-between  my-1 gap-x-1      "
             >
               <Balancer
                 onClick={() => router?.push(`/blog/${data?.slug}`)}
@@ -73,9 +73,9 @@ const BlogSection = () => {
                 <Eye className=" w-5 h-6 mr-2 opacity-80" />
                 <Views slug={data?.slug} />
               </div>
-              <div className=" group-hover:flex opacity-0 group-hover:opacity-100 hidden transition-all ease-in-out duration-75 delay-75  absolute bottom-3 right-4 items-center justify-between ">
+              <div className=" group-hover:visible opacity-0 group-hover:opacity-100 invisible transition-all ease-linear duration-100  absolute bottom-3 right-4 items-center justify-between ">
                 <div className="rounded-full p-1 dark:bg-white dark:text-black bg-black text-white">
-                  <ArrowRight className="w-6 h-6 -rotate-45 " />
+                  <ArrowRight className="w-5 h-5 -rotate-45 " />
                 </div>
               </div>
             </div>

@@ -8,11 +8,12 @@ import { MdxComponent } from "./mdx-components";
 import { doc, increment, setDoc, updateDoc } from "firebase/firestore";
 import { db } from "@/lib/firebase";
 import Views from "./views";
-import { ArrowLeft, Copy, Dot, Twitter } from "lucide-react";
+import { ArrowLeft, Copy, Dot, Eye, Twitter } from "lucide-react";
 import { useRouter } from "next/navigation";
 
 const BlogPage = ({ data }: { data: Blog }) => {
-  const { title, image, readingTime, createdAt, wordCount, slug } = data;
+  const { title, image, readingTime, createdAt, wordCount, slug, description } =
+    data;
   const Content = useMDXComponent(data?.body.code);
   const [IsImageLoaded, setIsImageLoaded] = useState(true);
   const router = useRouter();
@@ -37,7 +38,7 @@ const BlogPage = ({ data }: { data: Blog }) => {
       </div>
 
       <Balancer
-        className="text-2xl md:text-3xl  font-bold w-full mb-3 "
+        className="text-2xl md:text-3xl lg:text-4xl  font-semibold w-full mb-3 "
         as={"h1"}
         ratio={0.5}
       >
@@ -51,10 +52,11 @@ const BlogPage = ({ data }: { data: Blog }) => {
           <span className="">{wordCount} words</span>
         </div>
         <div className="flex items-center justify-center gap-x-2">
-          {/* <Heart /> */}
+          <Eye className=" w-5 h-6 mr-1 opacity-80" />
           <Views slug={slug} />
         </div>
       </div>
+
       <div className=" w-full overflow-hidden rounded-xl border-2 border-gray-200 dark:border-border">
         <Image
           alt=""

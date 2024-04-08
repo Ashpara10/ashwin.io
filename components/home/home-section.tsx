@@ -1,8 +1,10 @@
 import { allBlogs } from "@/.contentlayer/generated";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Variants, motion } from "framer-motion";
+import { Context, Tcontext } from "@/lib/providers";
+import useMousePosition from "@/lib/useMousePosition";
 
 const variants: Variants = {
   hidden: { opacity: 0, y: 30 },
@@ -21,6 +23,8 @@ const variants: Variants = {
 const HomeSection = () => {
   const [blur, setBlur] = useState(true);
   const router = useRouter();
+  const { onEnter, onLeave, isInside } = useContext(Context) as Tcontext;
+  const { x, y } = useMousePosition();
 
   return (
     <motion.div
@@ -45,7 +49,11 @@ const HomeSection = () => {
             quality={100}
           />
 
-          <div className="w-full ml-4 flex flex-col items-start justify-center">
+          <div
+            onMouseEnter={onEnter}
+            onMouseLeave={onLeave}
+            className="w-full ml-4 flex flex-col items-start justify-center"
+          >
             <div className="w-full flex items-center justify-between">
               <span className=" text-left text-xl font-semibold tracking-tighter">
                 {" "}

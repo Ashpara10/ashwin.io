@@ -21,9 +21,9 @@ const useMousePosition = () => {
   const manageMouseMove = (e: any) => {
     const { clientX, clientY } = e;
 
-    mouse.x.set(clientX - cursorSize / 2);
+    mouse.x.set(clientX + 25);
 
-    mouse.y.set(clientY - cursorSize / 2);
+    mouse.y.set(clientY + 25);
   };
 
   useEffect(() => {

@@ -61,12 +61,12 @@ const RoundedImage = (props: any) => {
   const [IsImageLoaded, setIsImageLoaded] = useState(true);
 
   return (
-    <div className="border dark:border-border border-gray-200 w-full overflow-hidden rounded-xl bg-gray-200 ">
+    <div className="border-2 dark:border-border border-gray-200 w-full overflow-hidden rounded-xl ">
       <Image
         alt=""
         className={`
-    duration-700 ease-in-out 
-    ${IsImageLoaded ? "blur-2xl " : " blur-0 "})`}
+  \ transition-all duration-100 ease-linear
+    ${IsImageLoaded ? "blur-xl " : " blur-0 "})`}
         src={props.src}
         width={800}
         height={900}

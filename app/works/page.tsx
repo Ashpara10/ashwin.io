@@ -15,17 +15,17 @@ const Page = () => {
             return (
               <div
                 key={i}
-                className="rounded-xl max-w-sm border dark:border-border p-4"
+                className="rounded-3xl odd:-rotate-1 even:rotate-2 max-w-sm border dark:border-border p-4"
               >
                 <div className="flex items-center justify-between gap-x-2 px-2">
-                  <Image
+                  {/* <Image
                     src={w?.image}
                     width={40}
                     className="  aspect-square"
                     height={40}
                     alt="logo"
                     quality={100}
-                  />
+                  /> */}
 
                   <div className="flex items-center justify-center gap-x-2">
                     {w.tags.split(",").map((t, i) => {
@@ -42,10 +42,10 @@ const Page = () => {
                 </div>
                 <div className="mt-2 px-2 flex flex-col ">
                   <h3
-                    className="text-lg font-medium tracking-tight"
+                    className="text-lg  tracking-tight"
                     onClick={() => router.push(`/works/${w?.slug}`)}
                   >
-                    {w.name}
+                    {w?.name}
                   </h3>
                   <Balancer className="opacity-80  ">{w?.description}</Balancer>
                 </div>
