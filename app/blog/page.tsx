@@ -32,7 +32,7 @@ const Page = () => {
       <AnimatePresence>
         {active?.active ? (
           <motion.div
-            transition={{ duration: 0.75, type: "keyframes" }}
+            transition={{ duration: 0.75, type: "tween" }}
             style={{ top: y, left: x }}
             className="max-w-md overflow-hidden w-full fixed z-20"
           >
@@ -48,7 +48,7 @@ const Page = () => {
       </AnimatePresence>
       <div className="w-full max-w-2xl flex items-center justify-start flex-col">
         <h3 className="w-full text-left text-2xl mb-2 font-semibold tracking-tight">
-          Read all Blogs 📰
+          Read all Articles 📰
         </h3>
         <span className="opacity-80 mb-4">
           On a mission to build products developers love, and along the way,
@@ -68,6 +68,7 @@ const Page = () => {
                 onMouseLeave={() => setActive({ active: false, index: index })}
                 key={index}
                 variants={item}
+                transition={{ type: "tween" }}
                 className="flex w-full  items-center gap-x-2  justify-center rounded-lg "
               >
                 <div className=" w-full flex flex-col  items-start justify-center">

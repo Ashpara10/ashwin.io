@@ -2,129 +2,148 @@
 @tailwind components;
 @tailwind utilities;
 
-
-html{
-    @apply scrollbar-none select-none
+@layer utilities {
+  @variants responsive {
+    .masonry {
+      column-gap: 1.5em;
+      column-count: 1;
+    }
+    .masonry-sm {
+      column-gap: 1.5em;
+      column-count: 2;
+    }
+    .masonry-md {
+      column-gap: 1.5em;
+      column-count: 3;
+    }
+    .break-inside {
+      break-inside: avoid;
+    }
+  }
 }
 
-input{
-  @apply bg-transparent focus-visible:outline-none
+html {
+  @apply scrollbar-none select-none;
+}
+
+input {
+  @apply bg-transparent focus-visible:outline-none;
 }
 
 pre {
-    @apply bg-transparent rounded-b-xl py-3 px-4  border border-gray-200 dark:border-border overflow-x-scroll max-w-2xl
-  }
-  .rehype-code-title{
-    @apply dark:text-white translate-y-5 px-4 py-3 rounded-t-xl text-black bg-gray-200 dark:bg-border m-0 gap-0 
-  }
-  
-  .token.comment,
-  .token.prolog,
-  .token.doctype,
-  .token.cdata {
-    @apply text-gray-700 dark:text-gray-300;
-  }
-  
-  .token.punctuation {
-    @apply text-gray-700 dark:text-gray-300;
-  }
-  
-  span{
-    @apply dark:text-white text-dark
-  }
-  
-  .token.property,
-  .token.tag,
-  .token.boolean,
-  .token.number,
-  .token.constant,
-  .token.symbol,
-  .token.deleted {
-    @apply text-green-700 dark:text-green-500;
-  }
-  
-  .token.selector,
-  .token.attr-name,
-  .token.string,
-  .token.char,
-  .token.builtin,
-  .token.inserted {
-    @apply text-purple-700 dark:text-purple-500;
-  }
-  
-  .token.operator,
-  .token.entity,
-  .token.url,
-  .language-css .token.string,
-  .style .token.string {
-    @apply text-yellow-600 dark:text-yellow-500;
-  }
-  
-  .token.atrule,
-  .token.attr-value,
-  .token.keyword {
-    @apply text-blue-700 dark:text-blue-500;
-  }
-  
-  .token.function,
-  .token.class-name {
-    @apply text-pink-700 dark:text-pink-500;
-  }
-  
-  .token.regex,
-  .token.important,
-  .token.variable {
-    @apply text-yellow-500;
-  }
-  
-  
-  
-  
-  pre {
-    overflow-x: auto;
-    @apply scrollbar-thin 
-  }
-  
-  /**
+  @apply bg-transparent rounded-b-xl py-3 px-4  border border-gray-200 dark:border-border overflow-x-scroll max-w-2xl;
+}
+.rehype-code-title {
+  @apply dark:text-white translate-y-5 px-4 py-3 rounded-t-xl text-black bg-gray-200 dark:bg-border m-0 gap-0;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+  @apply text-gray-700 dark:text-gray-300;
+}
+
+.token.punctuation {
+  @apply text-gray-700 dark:text-gray-300;
+}
+
+span {
+  @apply dark:text-white text-dark;
+}
+
+.token.property,
+.token.tag,
+.token.boolean,
+.token.number,
+.token.constant,
+.token.symbol,
+.token.deleted {
+  @apply text-green-700 dark:text-green-500;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+  @apply text-purple-700 dark:text-purple-500;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string {
+  @apply text-yellow-600 dark:text-yellow-500;
+}
+
+.token.atrule,
+.token.attr-value,
+.token.keyword {
+  @apply text-blue-700 dark:text-blue-500;
+}
+
+.token.function,
+.token.class-name {
+  @apply text-pink-700 dark:text-pink-500;
+}
+
+.token.regex,
+.token.important,
+.token.variable {
+  @apply text-yellow-500;
+}
+
+pre {
+  overflow-x: auto;
+  @apply scrollbar-thin;
+}
+
+/**
    * Inspired by gatsby remark prism - https://www.gatsbyjs.com/plugins/gatsby-remark-prismjs/
    * 1. Make the element just wide enough to fit its content.
    * 2. Always fill the visible space in .code-highlight.
    */
-  .code-highlight {
-    float: left; /* 1 */
-    min-width: 100%; /* 2 */
-  }
-  
-  .code-line {
-    display: block;
-    padding-left: 16px;
-    padding-right: 16px;
-    margin-left: -16px;
-    margin-right: -16px;
-    border-left: 4px solid rgba(0, 0, 0, 0); /* Set placeholder for highlight accent border color to transparent */
-  }
-  
-  .code-line.inserted {
-    background-color: rgba(16, 185, 129, 0.2); /* Set inserted line (+) color */
-  }
-  
-  .code-line.deleted {
-    background-color: rgba(239, 68, 68, 0.2); /* Set deleted line (-) color */
-  }
-  
-  .highlight-line {
-    margin-left: -16px;
-    margin-right: -16px;
-    background-color: rgba(55, 65, 81, 0.5); /* Set highlight bg color */
-    border-left: 4px solid rgb(59, 130, 246); /* Set highlight accent border color */
-  }
-  
-  .line-number::before {
-    display: inline-block;
-    width: 1rem;
-    text-align: right;
-    margin-right: 16px;
-    margin-left: -8px;
-    color: rgb(156, 163, 175); /* Line number color */
-    content: attr(line);
-  }
+.code-highlight {
+  float: left; /* 1 */
+  min-width: 100%; /* 2 */
+}
+
+.code-line {
+  display: block;
+  padding-left: 16px;
+  padding-right: 16px;
+  margin-left: -16px;
+  margin-right: -16px;
+  border-left: 4px solid rgba(0, 0, 0, 0); /* Set placeholder for highlight accent border color to transparent */
+}
+
+.code-line.inserted {
+  background-color: rgba(16, 185, 129, 0.2); /* Set inserted line (+) color */
+}
+
+.code-line.deleted {
+  background-color: rgba(239, 68, 68, 0.2); /* Set deleted line (-) color */
+}
+
+.highlight-line {
+  margin-left: -16px;
+  margin-right: -16px;
+  background-color: rgba(55, 65, 81, 0.5); /* Set highlight bg color */
+  border-left: 4px solid rgb(59, 130, 246); /* Set highlight accent border color */
+}
+
+.line-number::before {
+  display: inline-block;
+  width: 1rem;
+  text-align: right;
+  margin-right: 16px;
+  margin-left: -8px;
+  color: rgb(156, 163, 175); /* Line number color */
+  content: attr(line);
+}
+code {
+  @apply py-3;
+}

@@ -5,18 +5,14 @@ import { DefaultUser, Session, getServerSession } from "next-auth";
 import { signIn, signOut } from "next-auth/react";
 import React, { useEffect, useState } from "react";
 import {
-  getDocs,
   collection,
   query,
-  where,
   onSnapshot,
-  Timestamp,
   DocumentData,
   QuerySnapshot,
-  setDoc,
-  doc,
-  addDoc,
 } from "firebase/firestore";
+import { AnimatePresence, motion } from "framer-motion";
+import Image from "next/image";
 
 const q = query(collection(db, "chat"));
 
@@ -26,11 +22,9 @@ const getUserSession = async () => {
   return resp;
 };
 
-type Tchat = { user: string; data: string; createdAt: Timestamp };
-
 const Page = () => {
   const [user, setUser] = useState<Session | null>(null);
-
+  const [open, setOpen] = useState(false);
   const [chat, setChat] = useState<QuerySnapshot<DocumentData, DocumentData>>();
   useEffect(() => {
     const getData = async () => {
@@ -50,19 +44,32 @@ const Page = () => {
         Guestbook 🌱
       </h2>
       {!user?.user && (
-        <div className="w-full max-w-2xl flex flex-col items-start justify-center gap-2 mb-4">
-          <span className="opacity-90 flex flex-wrap max-w-md">
-            Authenticate with your Google account to leave a message int the
-            guestbook{" "}
-            <button
-              onClick={() => signIn("google")}
-              className="underline underline-offset-2 opacity-80 mt-2 "
-            >
-              {" "}
-              SignIn with Google
-            </button>
-          </span>
-        </div>
+        <>
+          <div className="w-full max-w-2xl flex flex-col items-start justify-center gap-2 mb-4">
+            <span className="opacity-90 flex flex-wrap max-w-md">
+              Authenticate with your Google or Github account to leave a message
+              int the guestbook{" "}
+              <button
+                onClick={() => {
+                  signIn("google");
+                }}
+                className="underline flex items-center justify-center gap-2 underline-offset-2 opacity-80 mt-2 "
+              >
+                {" "}
+                SignIn with Google
+              </button>
+              <button
+                onClick={() => {
+                  signIn("github");
+                }}
+                className="underline ml-4 flex items-center justify-center gap-2 underline-offset-2 opacity-80 mt-2 "
+              >
+                {" "}
+                SignIn with Github
+              </button>
+            </span>
+          </div>
+        </>
       )}
       {user?.user && <Input user={user?.user as DefaultUser} />}
 

@@ -11,7 +11,7 @@ const Views = ({ slug }: { slug: string }) => {
     });
     return () => unsub();
   }, []);
-  return <>{views} </>;
+  return <span>{views} </span>;
 };
 
 export default Views;
